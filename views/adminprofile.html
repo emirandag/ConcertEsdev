@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Esdeveniments de BARCELONA</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    header {
+      background-color: #0066c0;
+      text-align: center;
+      padding: 3px;
+      color: white;
+    }
+
+    .navbar-default {
+      background-color: black;
+    }
+
+
+    .navbar-default .navbar-nav>li>a {
+      color: #fff;
+    }
+
+    .navbar-default .navbar-nav>li>a:hover,
+    .navbar-default .navbar-nav>li>a:focus {
+      color: #fff;
+    }
+
+    .navbar-default .navbar-nav>.active>a,
+    .navbar-default .navbar-nav>.active>a:hover,
+    .navbar-default .navbar-nav>.active>a:focus {
+      color: #fff;
+      background-color: black;
+    }
+
+    .btn-primary {
+      background-color: #0E705C;
+      border-color: #fff;
+    }
+
+
+
+    .panel-footer {
+      color: #fff;
+      background-color: grey;
+    }
+
+    div[class*="row"]>h2,
+    div[class*="col-"]>h3 {
+      color: black;
+    }
+
+    .section {
+      background-color: black;
+    }
+
+    .panel-body {
+      background-color: #0066c0;
+      text-align: center;
+      padding: 3px;
+      color: white;
+    }
+  </style>
+
+
+  <script type="text/javascript">
+
+  </script>
+
+
+</head>
+
+<body>
+
+  <div id="capa1">
+    <header>
+      <h2>CONCERTESDEV</h2>
+    </header>
+
+  </div>
+
+
+  <section id="header" class="container-fluid">
+    <div class="row">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Menú</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"></a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Inici</a></li>
+
+              <li><a href="/register"><span class="glyphicon glyphicon-user"></span>Alta Soci</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Actuacions Musicals</a></li>
+                  <li><a href="#">Teatre</a></li>
+                  <li><a href="#">Les tevas propostes</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Altres</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-center">
+              <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>Taquilla</a></li>
+
+            </ul>
+            <div class="nav navbar-nav navbar-right">
+              <form class="navbar-form navbar-left">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Cercador">
+                </div>
+                <button type="submit" class="btn btn-default">Buscar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  <% if (locals.messages) {
+  if (messages.error) { %>
+  <div class="alert alert-danger"><%= messages.error %></div>
+  <% } else if (messages.success) { %>
+  <div class="alert alert-success"><%= messages.success %></div>
+  <% }
+  } %>
+  <h2>¡Bienvenido a tu perfil!<br> Eres el administrador de la web</h2>
+
+  <div class="">
+    <p>Veure els esdeveniments proposats
+      <a href="/events/listAdmin" class="btn btn-primary">Proposats</a>
+    </p>
+  </div>
+  <div class="">
+    <p>Veure tots els esdeveniments
+      <a href="/events/list" class="btn btn-primary">Listar esdeveniments</a>
+    </p>
+  </div>
+
+
+</body>
+
+</html>

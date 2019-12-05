@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CONCERTESDEV</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="estils.css">
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+
+    <style>
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 45%;
+            margin: auto;
+        }
+        .navbar-default {
+            background-color: black;
+        }
+        .carousel-control.right {
+        background-image:linear-gradient(to right,#0066c0 0%, #0066c0 100%);
+        }
+        .carousel-control.left {
+        background-image:linear-gradient(to left,#0066c0 0%,#0066c0 100% );
+        }
+
+        header{
+            background-color:#0066c0;
+            text-align:center;
+            padding:3px;
+            color:white;
+        }
+
+
+
+
+        .navbar-default .navbar-nav > li > a {
+            color: #fff;
+        }
+
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: #fff;
+        }
+
+        .navbar-default .navbar-nav > .active > a,
+        .navbar-default .navbar-nav > .active > a:hover,
+        .navbar-default .navbar-nav > .active > a:focus {
+            color: #fff;
+            background-color: black;
+        }
+        .btn-primary {
+            background-color:#0E705C;
+            border-color:#fff;
+        }
+
+
+
+         .panel-footer {
+            color: #fff;
+            background-color: grey;
+        }
+
+        div[class*="row"] > h2, div[class*="col-"] > h3 {
+            color:black;
+        }
+        .section{
+            background-color:black;
+        }
+        .panel-body{
+          background-color:#0066c0;
+           text-align:center;
+            padding:3px;
+            color:white;
+        }
+
+
+        /*
+        .navbar {
+  margin-bottom: 0px;
+  border: 0px;
+
+        */
+
+    </style>
+
+</head>
+  <body>
+
+           <div id="capa1">
+              <header>
+                 <h2>CONCERTESDEV</h2>
+               </header>
+
+            </div>
+
+
+       <section id="header" class="container-fluid">
+        <div class="row">
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Menú</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a class="navbar-brand" href="#"></a>
+              </div>
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="/">Inici</a></li>
+                 <li><a href="/register"><span class="glyphicon glyphicon-user"></span>Alta Soci</a></li>
+                 <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span>Accés Compte</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Actuacions Musicals</a></li>
+                      <li><a href="#">Teatre</a></li>
+                      <li><a href="#">Les tevas propostes</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Altres</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                 <ul class="nav navbar-nav navbar-center">
+            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span>Taquilla</a></li>
+
+          </ul>
+                <div class="nav navbar-nav navbar-right">
+                  <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Cercador">
+                    </div>
+                    <button type="submit" class="btn btn-default">Buscar</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+    </section>
+
+    <% if (locals.messages) {
+      if (messages.error) { %>
+        <div class="alert alert-danger"><%= messages.error %></div>
+    <% } else if (messages.success) { %>
+      <div class="alert alert-success"><%= messages.success %></div>
+      <% }
+      } %>
+
+  <section id="seccio2" class="container">
+    <div class="row text-center">
+      <h2>COMPRA les tevas entradas a taquilla</h2>
+      <hr class="small" />
+    </div>
+
+    <div class="panel panel-default">
+      <% if (events.length > 0) { %>
+      <div class="panel-body">
+        <h2>Eventos</h2>
+      </div>
+      <div class="row">
+        <% events.forEach(function(item){
+               console.log(item.nomEsdev); %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <h3><%= item.nomEsdev %></h3>
+          <figure></figure>
+          <img src="/public/img/cinema.jpg" alt="Icona" width="160" height="145" />
+          <a href="/events/list/<%= item._id%>" class="btn btn-primary">Veure detalls...</a>
+          <p><%= item.ubicacio %></p>
+        </div>
+        <%   }); %>
+      </div>
+
+
+    </div>
+    <% } else { %>
+    <p>¡No existen eventos disponibles!</p>
+    <%  } %>
+
+    <div class="">
+      <p>Promociona el teu esdeveniment
+        <a href="/events/suggested" class="btn btn-primary">Proposar</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="container-fluid">
+  <div class="row">
+  <footer class="panel-footer">
+      <p class="text-center">CONCERTESDEV</p>
+  </footer>
+  </div>
+  </section>
+
+
+  </body>
+</html>

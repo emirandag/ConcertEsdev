@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="icon" type="/image/png" href="public/img/favicon.png"/>
+  <title>ConcertEsdev</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="public/estilos.css">
+</head>
+
+<body>
+
+  <div id="capa1">
+    <header>
+        <img class="uno" src="public/img/logonou.png" alt="imagen" width="160" heigth="160">
+    </header>
+
+  </div>
+
+
+  <section id="header" class="container-fluid">
+    <div class="row">
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Menú</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"></a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Inici</a></li>
+
+              <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span>Accés Compte</a></li>
+                <li><a href="/formulariContacte">Contacte amb nosaltres</a></li>
+              <li class="dropdown">
+               
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-center">
+            
+
+            </ul>
+            <div class="nav navbar-nav navbar-right">
+              <form class="navbar-form navbar-left">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Cercador">
+                </div>
+                <button type="submit" class="btn btn-default">Buscar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+<% if (locals.messages) {
+  if (messages.error) { %>
+    <div class="alert alert-danger"><%= messages.error %></div>
+<% } else if (messages.success) { %>
+  <div class="alert alert-success"><%= messages.success %></div>
+  <% }
+  } %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="well well-sm">
+          <form class="form-horizontal" action="/users/register" method="post">
+            <fieldset>
+              <legend class="text-center header">Registrar-se</legend>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom " required /></div>
+              </div>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="cognom" name="cognom" placeholder="Cognom " required /></div>
+              </div>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                <div class="col-md-6">
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Correo electrònic " required /></div>
+              </div>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                <div class="col-md-6">
+                  <input type="password" class="form-control" id="pass" name="pass" placeholder="Contrasenya (Major de 8 caracters inclos mayusculas, minusculas i numeros)" pattern="[A-Za-z0-9]{8,30}" required /></div>
+              </div>
+              <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                <div class="col-md-6">
+                  <input type="password" class="form-control" id="confpass" name="confpass" placeholder="Confirmar contrasenya (Major de 8 caracters inclos mayusculas, minusculas i numeros)" pattern="[A-Za-z0-9]{8,30}" required /></div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12 text-center">
+                  <button type="submit" class="btn btn-primary btn-lg" id="login">Registrar-se</button>
+                </div>
+              </div>
+        </div>
+      </div>
+      </fieldset>
+      </form>
+
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Perfil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="topnav">
+      <nav>
+        <a href="/">Home</a>
+        <a href="/events/listAdmin">Eventos</a>
+        <a href="/login">Cerrar sesión</a>
+      </nav>
+    </div>
+    <% if (locals.messages) {
+      if (messages.error) { %>
+        <div class="alert alert-danger"><%= messages.error %></div>
+    <% } else if (messages.success) { %>
+      <div class="alert alert-success"><%= messages.success %></div>
+      <% }
+      } %>
+    <h2>¡Bienvenido a tu perfil!<br> Eres el administrador de la web</h2>
+  </body>
+</html>

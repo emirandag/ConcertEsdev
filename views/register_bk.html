@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="topnav">
+      <nav>
+        <a href="/">Home</a>
+        <a href="/register">Registro</a>
+        <a href="/login">Login</a>
+      </nav>
+    </div>
+    <% if (locals.messages) {
+      if (messages.error) { %>
+        <div class="alert alert-danger"><%= messages.error %></div>
+    <% } else if (messages.success) { %>
+      <div class="alert alert-success"><%= messages.success %></div>
+      <% }
+      } %>
+
+    <div id="form">
+      <h2>Registrarse</h2>
+      <form class="" action="/users/register" method="post">
+        <label for="nom">Nombre:</label>
+        <input type="text" id="nom" name="nom" required/><br>
+        <label for="cognom">Apellidos:</label>
+        <input type="text" id="cognom" name="cognom" required/><br>
+        <label for="email">Correo electrónico:</label>
+        <input type="text" id="email" name="email" required/><br>
+        <label for="contrasenya">Contraseña:</label>
+        <input type="password" id="pass" name="pass" required/><br>
+        <label for="confpass">Confirmar contraseña:</label>
+        <input type="password" id="confpass" name="confpass" required/><br>
+        <button type="submit">Registrar</button>
+      </form>
+      <p>¿Ya tienes una cuenta?<a href="/login">Iniciar sesión</a></p>
+    </div>
+
+  </body>
+</html>
