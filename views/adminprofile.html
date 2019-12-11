@@ -9,22 +9,17 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="public/estilos.css">
+<link rel="stylesheet" type="text/css" href="../../public/estilos.css">
 
 </head>
 
 <body>
 
-  <div id="capa1">
-    <header>
-      <h2>CONCERTESDEV</h2>
-    </header>
-
-  </div>
-
   <!-- S'inclos el header des de la carpeta layouts -->
   <%- include layouts/header.html %>
 
+    <!-- S'inclos el nav des de la carpeta layouts -->
+    <%- include layouts/navigation.html %>
   <!-- Es mostra els missatges des de el servidor a les vistes -->
   <% if (locals.messages) {
       if (messages.error) { %>

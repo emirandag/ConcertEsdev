@@ -15,16 +15,11 @@
 
 <body>
 
-  <div id="capa1">
-    <header>
-      <h2>CONCERTESDEV</h2>
-    </header>
-
-  </div>
-
-
   <!-- S'inclos el header des de la carpeta layouts -->
   <%- include layouts/header.html %>
+
+    <!-- S'inclos el nav des de la carpeta layouts -->
+    <%- include layouts/navigation.html %>
 
   <!-- Es mostra els missatges des de el servidor a les vistes -->
   <% if (locals.messages) {

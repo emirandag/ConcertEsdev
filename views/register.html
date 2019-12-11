@@ -14,15 +14,11 @@
 
 <body>
 
-  <div id="capa1">
-    <header>
-        <img class="uno" src="public/img/logonou.png" alt="imagen" width="160" heigth="160">
-    </header>
-
-  </div>
-
   <!-- S'inclos el header des de la carpeta layouts -->
   <%- include layouts/header.html %>
+
+    <!-- S'inclos el nav des de la carpeta layouts -->
+    <%- include layouts/navigation.html %>
 
   <!-- Es mostra els missatges des de el servidor a les vistes -->
   <% if (locals.messages) {

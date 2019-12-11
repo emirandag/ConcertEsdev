@@ -13,17 +13,11 @@
 </head>
 <body>
 
-       <div id="capa1">
-          <header>
-               <img class="uno" src="public/img/logonou.png" alt="imagen" width="160" heigth="160">
+      <!-- S'inclos el header des de la carpeta layouts -->
+      <%- include layouts/header.html %>
 
-           </header>
-
-        </div>
-
-
-        <!-- S'inclos el header des de la carpeta layouts -->
-        <%- include layouts/header.html %>
+        <!-- S'inclos el nav des de la carpeta layouts -->
+        <%- include layouts/navigation.html %>
 
         <!-- Es mostra els missatges des de el servidor a les vistes -->
         <% if (locals.messages) {
@@ -232,10 +226,10 @@
         <a href="" class="btn btn-primary">Més...</a>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <h3>Novetats</h3>
+        <h3>Tots els esdeveniments</h3>
         <figure></figure>
-        <p>Coneix les novetats d'aquesta setmana.</p>
-        <a href="" class="btn btn-primary">Més...</a>
+        <p>Coneix tots els esdeveniments disponibles</p>
+        <a href="/events/listUser" class="btn btn-primary">Més...</a>
       </div>
     </div>
     <div class="row text-center">
