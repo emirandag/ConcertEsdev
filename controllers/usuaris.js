@@ -56,22 +56,18 @@ router.post('/register', function(request, response) {
 * Manejador POST per realitzar la validació del usuari
 */
 router.get('/login', function(request, response){
-  response.render('login');
+    response.render('login');
 });
 
 
 router.post('/login', function(request, response){
 
-var errors = [];
   if (request.body.email && request.body.pass){
 
       users.getAuthenticated(request.body.email, request.body.pass, function(error, user){
 
-				var validado = request.session.user;
-				 validado = user;
-				 console.log(validado);
         if (error || !user) {
-          
+
           if (user === null) {
 
             request.flash("error", '¡Aquest usuari no existeix!');
@@ -93,20 +89,52 @@ var errors = [];
 
 				if (request.body.email == 'admin@concertesdev.com') {
 
+          //request.session.loggedIn = true;
+
+          //request.session.admin = request.body.email;
+          //response.locals.user = request.session.admin;
+
+
           request.flash("success", '¡Has iniciat sessió correctament!');
           response.locals.messages = request.flash();
           response.render('adminprofile', {user: user.nom});
+          //console.log("+++++++++++++++++"+request.sessionID);
 
 				} else {
 
+            //request.session.user = request.body.email;
+            //response.locals.user = request.session.user;
             request.flash("success", '¡Has iniciat sessió correctament!');
             response.locals.messages = request.flash();
-            response.render('userprofile', {user: user.nom});
+            response.render('userprofile', {user: user});
+
 
 				}
       }
   });
 }
+});
+
+router.get('/logout', function(request, response, next) {
+    request.session.destroy(function(err) {
+      if(err) {
+        return next(err);
+      } else {
+        response.render('login');
+      }
+    });
+
+});
+
+router.post('/confirmMail', function(request, response) {
+  users.findOne({email: request.body.email}, function(err, user) {
+    if (err) {
+      response.send("Aquest mail no existeix");
+    } else {
+      //response.send("El mail es correcte", {user: user});
+      response.render('resetPass', {user: user});
+    }
+  });
 });
 
 

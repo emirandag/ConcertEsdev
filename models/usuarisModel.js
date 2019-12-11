@@ -28,6 +28,10 @@ var UserSchema = new mongoose.Schema({
   }
 });
 
+
+/**
+* Mètode per encriptar la contrasenya de l'usuari abans de desar-la a la base de dades 
+**/
 UserSchema.pre('save', function(next) {
   var user = this;
   bcrypt.hash(user.pass, 10, function(err, hash) {
@@ -40,7 +44,7 @@ UserSchema.pre('save', function(next) {
 });
 
 /**
-* Metode per fer la compararació de que la contrasenya i la seva confirmació siguin iguals
+* Metode per fer la compararació de que la contrasenya, quan l'usuari faci inici de sessió
 **/
 UserSchema.methods.comparePassword = function(candidatePassword, cb) {
 

@@ -11,15 +11,44 @@ var logger = function(req, resp, next) {
 	console.log(req.url);
 	next();
 }
+//var redis = require('redis');
+//var redisStore = require('connect-redis')(session);
+//var client = redis.createClient();
+var cookieParser = require('cookie-parser');
+var partials = require('express-partials');
+
+//client.on('error', (err) => {
+//  console.log('Redis error: ', err);
+//});
+
 
 app.use(logger);
 app.use(flash());
+app.use(cookieParser());
+app.use(partials());
 
 app.use(session({
-    secret: '2C44-4D44-WppQ38S',
-    resave: true,
-    saveUninitialized: true
+  secret: "sosecret",
+  saveUninitialized: false,
+  resave: false
 }));
+/*
+app.use(function (req, res, next) {
+if(req.session.userId !== undefined){
+res.locals.loggedIn = req.user;
+} else {
+res.locals.loggedIn = null;
+}
+next();
+});
+*/
+
+app.use(function(req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+});
+
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use('/users', require('./controllers/usuaris'));

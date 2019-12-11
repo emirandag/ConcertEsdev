@@ -41,7 +41,11 @@ var EventoSchema = mongoose.Schema({
   dataEsdev: {
        type: String,
        required: true
-           }
+            },
+  organitzador: {
+        type: String,
+        required: true
+            }
 });
 
 module.exports = mongoose.model('esdeveniment', EventoSchema);

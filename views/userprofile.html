@@ -2,27 +2,29 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Perfil</title>
+    <title>ConcertEsdev</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div class="topnav">
-      <nav>
-        <a href="/">Home</a>
-        <a href="/events/listUser">Eventos</a>
-        <a href="/login">Cerrar sesión</a>
-      </nav>
-    </div>
+
+    <!-- S'inclos el header des de la carpeta layouts -->
+    <%- include layouts/header.html %>
+
+    <!-- Es mostra els missatges des de el servidor a les vistes -->
     <% if (locals.messages) {
-      if (messages.error) { %>
-        <div class="alert alert-danger"><%= messages.error %></div>
-    <% } else if (messages.success) { %>
-      <div class="alert alert-success"><%= messages.success %></div>
-      <% }
+        if (messages.error) { %>
+        <div class="col-md-10 col-md-offset-1 alert alert-danger"><%= messages.error %></div>
+     <% } else if (messages.success) { %>
+        <div class="col-md-10 col-md-offset-1 alert alert-success"><%= messages.success %></div>
+     <% } else if (messages.info) { %>
+        <div class="col-md-10 col-md-offset-1 alert alert-info"><%= messages.info %></div>
+     <% }
       } %>
+
+
     <h2>¡Bienvenido a tu perfil! <%= user %></h2>
   </body>
 </html>
