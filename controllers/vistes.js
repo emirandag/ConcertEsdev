@@ -69,7 +69,7 @@ router.get('/insert',function(req, resp){
 /**
 * Manejador GET que renderizació a la vista "formulariContacte.html"
 **/
-router.get('/insert',function(req, resp){
+router.get('/formulariContacte',function(req, resp){
 	resp.render('formulariContacte', {});
 	console.log('send to formulari de contacte');
 });
