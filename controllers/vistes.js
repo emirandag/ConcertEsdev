@@ -24,22 +24,38 @@ router.get('/login',function(req,resp){
 });
 
 router.get('/userprofile',function(req,resp){
-	//resp.sendFile(__dirname+ "/views/login.html");
-  resp.render('login', {});
-	console.log('send to profile');
+  if (req.session.user == "admin@concertesdev.com") {
+    resp.redirect('adminprofile');
+  } else if (req.session.user) {
+    resp.render('userprofile');
+  } else {
+    resp.render('login');
+  }
 });
 
 router.get('/adminprofile',function(req,resp){
-    resp.render('login', {});
-  	//console.log('send to profile');
+  if (req.session.user.email == "admin@concertesdev.com") {
+    resp.render('adminprofile');
+  } else if (req.session.user) {
+    resp.redirect('userprofile');
+  } else {
+    resp.render('login');
+  }
 });
 
 /**
 * Manejador GET que renderizació a la vista "addSuggested.html"
 **/
 router.get('/suggested',function(req, resp){
-	resp.render('addSuggested', {});
-	console.log('send to events suggested');
+  if (req.session.user) {
+    resp.render('addSuggested', {});
+  	console.log('send to events suggested');
+ } else {
+   req.flash("error", "¡Per poder promocionar esdeveniments, tens que iniciar sessió!");
+   resp.locals.messages = req.flash();
+   resp.render('login');
+ }
+
 });
 
 /**
@@ -49,6 +65,15 @@ router.get('/insert',function(req, resp){
 	resp.render('insert', {});
 	console.log('send to insert new event');
 });
+
+/**
+* Manejador GET que renderizació a la vista "formulariContacte.html"
+**/
+router.get('/insert',function(req, resp){
+	resp.render('formulariContacte', {});
+	console.log('send to formulari de contacte');
+});
+
 
 router.get('/confirmMail', function(req, resp) {
   resp.render('confirmMail', {});

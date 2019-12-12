@@ -16,8 +16,15 @@
       <!-- S'inclos el header des de la carpeta layouts -->
       <%- include layouts/header.html %>
 
-        <!-- S'inclos el nav des de la carpeta layouts -->
-        <%- include layouts/navigation.html %>
+        <!-- S'inclos el nav des de la carpeta layouts
+              Si l'usuari ha iniciat sessió li mostrará el nav de logueado amb el botó de logout
+              Si no mostrará el nav normal amb les botons d'alta i de login-->
+        <% if (locals.user) { %>
+          <%- include layouts/navigationLoggedIn.html %>
+        <% } else { %>
+          <%- include layouts/navigation.html %>
+        <% } %>
+
 
         <!-- Es mostra els missatges des de el servidor a les vistes -->
         <% if (locals.messages) {
@@ -144,7 +151,7 @@
 
 <section id="seccio2" class="container">
     <div class="row text-center">
-    <h2>Activitats i Plans gratuits per fer a Barcelona</h2>
+    <h2>Activitats i plans per fer a Barcelona</h2>
     <hr class="small" />
     </div>
      <div class="panel panel-default">
@@ -156,43 +163,43 @@
         <h3>Cinema</h3>
         <figure></figure>
          <img src="public/img/cinema.jpg" alt="Icona"  width="160" height="145"/>
-        <a href="" class="btn btn-primary">Més...</a>
+        <a href="/events/findTipus/Cinema" class="btn btn-primary">Més...</a>
         </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Teatre i Dansa</h3>
         <figure></figure>
           <img src="public/img/teatre2.jpg" alt="Icona" width="160" height="145"/>
-        <a href="" class="btn btn-primary">Més...</a>
+        <a href="/events/findTipus/Teatre i Dansa" class="btn btn-primary">Més...</a>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Gastronomia</h3>
         <figure></figure>
          <img src="public/img/cuina.jpg" alt="Icona"  width="160" height="145"/>
-        <a href="" class="btn btn-primary">Més...</a>
+        <a href="/events/findTipus/Gastronomia" class="btn btn-primary">Més...</a>
       </div>
         <div class="col-xs-12 col-sm-6 col-md-4">
-        <h3> Esports i Aventures</h3>
+        <h3>Esports i Aventures</h3>
             <figure></figure>
             <img src="public/img/aventura2.jpg" alt="Icona"  width="160" height="145"/>
-            <a href="" class="btn btn-primary">Més</a>
+            <a href="/events/findTipus/Esports i Aventures" class="btn btn-primary">Més</a>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Musicals</h3>
             <figure></figure>
             <img src="public/img/musical.jpg" alt="Icona"  width="160" height="145"/>
-            <a href="" class="btn btn-primary">Més</a>
+            <a href="/events/findTipus/Musicals" class="btn btn-primary">Més</a>
         </div>
          <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Activitats Infantils</h3>
             <figure></figure>
             <img src="public/img/niños.jpg" alt="Icona"  width="160" height="145"/>
-            <a href="" class="btn btn-primary">Més</a>
+            <a href="/events/findTipus/Activitats Infantils" class="btn btn-primary">Més</a>
         </div>
          <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Ciència i tecnologia</h3>
             <figure></figure>
             <img src="public/img/robot.jpg" alt="Icona"  width="160" height="145"/>
-            <a href="" class="btn btn-primary">Més</a>
+            <a href="/events/findTipus/Ciència i tecnologia" class="btn btn-primary">Més</a>
         </div>
           <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Fires i Festivals</h3>
@@ -204,7 +211,7 @@
         <h3>Música</h3>
             <figure></figure>
             <img src="public/img/musica.jpg" alt="Icona"  width="160" height="145"/>
-            <a href="" class="btn btn-primary">Més</a>
+            <a href="/events/findTipus/Musica" class="btn btn-primary">Més</a>
         </div>
     </div>
     </div>
@@ -223,7 +230,7 @@
         <h3>Promociona el teu esdeveniment</h3>
         <figure></figure>
         <p>Pot incloure a la nostra pàgina el teu esdeveniment. </p>
-        <a href="" class="btn btn-primary">Més...</a>
+        <a href="/suggested" class="btn btn-primary">Més...</a>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Tots els esdeveniments</h3>

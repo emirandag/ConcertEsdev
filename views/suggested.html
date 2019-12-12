@@ -15,8 +15,15 @@
   <!-- S'inclos el header des de la carpeta layouts -->
   <%- include layouts/header.html %>
 
-    <!-- S'inclos el nav des de la carpeta layouts -->
+  <!-- S'inclos el nav des de la carpeta layouts
+        Si l'usuari ha iniciat sessió li mostrará el nav de logueado amb el botó de logout
+        Si no mostrará el nav normal amb les botons d'alta i de login-->
+  <% if (locals.user) { %>
+    <%- include layouts/navigationLoggedIn.html %>
+  <% } else { %>
     <%- include layouts/navigation.html %>
+  <% } %>
+
 
   <!-- Es mostra els missatges des de el servidor a les vistes -->
   <% if (locals.messages) {
@@ -71,6 +78,11 @@
                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                       <div class="col-md-6">
                         <input type="date" class="form-control" id="dataEsdev" name="dataEsdev" value="<%= evento.dataEsdev %>" placeholder="Data de l'esdeveniment" required /></div>
+                    </div>
+                    <div class="form-group">
+                      <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                      <div class="col-md-6">
+                        <input type="text" class="form-control" id="organitzador" name="<%= evento.organitzador %>" placeholder="Organitzador de l'esdeveniment" required /></div>
                     </div>
                     <div class="form-group">
                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>

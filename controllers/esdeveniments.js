@@ -26,10 +26,16 @@ router.get('/listUser', function(request, response){
 
 		} else {
 
-			request.flash("info", "Aquests son els esdeveniments disponibles");
-			response.locals.messages = request.flash();
-			response.render('eventsUser', {events: eventos});
-			console.log("Aquests son els esdeveniments disponibles => " + eventos);
+			if (request.session.user) {
+				request.flash("info", "Aquests son els esdeveniments disponibles");
+				response.locals.messages = request.flash();
+				response.render('eventsUser', {events: eventos});
+				console.log("Aquests son els esdeveniments disponibles => " + eventos);
+		 } else {
+		   request.flash("error", "¡Per poder promocionar esdeveniments, tens que iniciar sessió!");
+		   response.locals.messages = request.flash();
+		   response.render('login');
+		 }
 
 		}
 	});
@@ -403,13 +409,20 @@ router.get('/insertAdmin', function(request, response) {
 
 router.get('/findTipus/:tipus', function(request, response) {
 	var tipo = request.params.tipus;
-	console.log(tipo);
+	//console.log(tipo);
 	eventos.find({tipus:request.params.tipus},function(error, tipos){
 
 		if (error) {
 			response.send(error);
 		} else {
-			response.render('eventType', {tipos:tipos});
+			 if (request.session.user) {
+				response.render('eventType', {tipos:tipos});
+			} else {
+				request.flash("error", "¡Per poder veure els esdeveniments, tens que iniciar sessió!");
+				response.locals.messages = request.flash();
+				response.render('login');
+			}
+
 		}
 	});
 });

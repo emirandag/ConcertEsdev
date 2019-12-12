@@ -18,8 +18,14 @@
   <!-- S'inclos el header des de la carpeta layouts -->
   <%- include layouts/header.html %>
 
-    <!-- S'inclos el nav des de la carpeta layouts -->
+  <!-- S'inclos el nav des de la carpeta layouts
+        Si l'usuari ha iniciat sessió li mostrará el nav de logueado amb el botó de logout
+        Si no mostrará el nav normal amb les botons d'alta i de login-->
+  <% if (locals.user) { %>
+    <%- include layouts/navigationLoggedIn.html %>
+  <% } else { %>
     <%- include layouts/navigation.html %>
+  <% } %>
 
   <!-- Es mostra els missatges des de el servidor a les vistes -->
   <% if (locals.messages) {

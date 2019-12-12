@@ -56,14 +56,20 @@ router.post('/register', function(request, response) {
 * Manejador POST per realitzar la validació del usuari
 */
 router.get('/login', function(request, response){
+  if (request.session.user.email == "admin@concertesdev.com") {
+    response.redirect('../adminprofile');
+  } else if (request.session.user) {
+    response.redirect('../userprofile');
+  } else {
     response.render('login');
+  }
+
 });
 
-
-router.post('/login', function(request, response){
+router.post('/login', function(request, response, next){
 
   if (request.body.email && request.body.pass){
-
+    //request.session.email = request.body.email;
       users.getAuthenticated(request.body.email, request.body.pass, function(error, user){
 
         if (error || !user) {
@@ -97,8 +103,11 @@ router.post('/login', function(request, response){
 
           request.flash("success", '¡Has iniciat sessió correctament!');
           response.locals.messages = request.flash();
-          response.render('adminprofile', {user: user.nom});
-          //console.log("+++++++++++++++++"+request.sessionID);
+          response.render('adminprofile', {user: user});
+          request.session.user = user;
+          request.session.save(function (user) {
+            request.session.user = user;
+          });
 
 				} else {
 
@@ -107,7 +116,10 @@ router.post('/login', function(request, response){
             request.flash("success", '¡Has iniciat sessió correctament!');
             response.locals.messages = request.flash();
             response.render('userprofile', {user: user});
-
+            request.session.user = user;
+            request.session.save(function (user) {
+              request.session.user = user;
+            });
 
 				}
       }
@@ -115,12 +127,13 @@ router.post('/login', function(request, response){
 }
 });
 
+
 router.get('/logout', function(request, response, next) {
     request.session.destroy(function(err) {
       if(err) {
         return next(err);
       } else {
-        response.render('login');
+        response.redirect('../login');
       }
     });
 

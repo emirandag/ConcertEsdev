@@ -12,7 +12,7 @@
         .carousel-control.left {
         background-image:linear-gradient(to left,#0066c0 0%,#0066c0 100% );
         }
-        
+
         header{
             background-color:#0066c0;
             text-align:left;
@@ -20,18 +20,18 @@
             color:white;
         }
 
-        
-        
-        
+
+
+
         .navbar-default .navbar-nav > li > a {
             color: #fff;
         }
-        
+
         .navbar-default .navbar-nav > li > a:hover,
         .navbar-default .navbar-nav > li > a:focus {
             color: #fff;
         }
-        
+
         .navbar-default .navbar-nav > .active > a,
         .navbar-default .navbar-nav > .active > a:hover,
         .navbar-default .navbar-nav > .active > a:focus {
@@ -40,16 +40,16 @@
         }
         .btn-primary {
             background-color:#0E705C;
-            border-color:#fff; 
+            border-color:#fff;
         }
-        
-    
-        
+
+
+
          .panel-footer {
             color: #fff;
             background-color: grey;
         }
-        
+
         div[class*="row"] > h2, div[class*="col-"] > h3 {
             color:black;
         }
@@ -62,8 +62,12 @@
             padding:3px;
             color:white;
         }
-        
-        
+
+        a {
+          color: white;
+        }
+
+
         /*
         .navbar {
   margin-bottom: 0px;

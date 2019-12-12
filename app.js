@@ -29,8 +29,9 @@ app.use(partials());
 
 app.use(session({
   secret: "sosecret",
-  saveUninitialized: false,
-  resave: false
+	name: 'sessio_user',
+  resave: true,
+	saveUninitialized: true
 }));
 /*
 app.use(function (req, res, next) {
@@ -65,3 +66,5 @@ app.use('/public', express.static('./public'));
 
 app.listen(8500);
 console.log("Servidor iniciat al port 8500");
+
+module.exports = app;
