@@ -53,7 +53,20 @@
               <div class="form-group">
                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" id="tipus" name="tipus" placeholder="Tipus " required /></div>
+                  <select class="form-control" name="tipus">
+                    <option name="" value="0" selected>Esculli categoria</option>
+                    <option name="cinema" value="Cinema">Cinema</option>
+                    <option name="teatre" value="Teatre i Dansa">Teatre i Dansa</option>
+                    <option name="gastronomia" value="Gastronomia">Gastronomia</option>
+                    <option name="esports" value="Esports i Aventures">Esports i Aventures</option>
+                    <option name="musicals" value="Musicals">Musicals</option>
+                    <option name="infantils" value="Activitats Infantils">Activitats Infantils</option>
+                    <option name="tecnologia" value="Ciència i Tecnologia">Ciència i Tecnologia</option>
+                    <option name="festivals" value="Fires i Festivals">Fires i Festivals</option>
+                    <option name="musica" value="Música">Música</option>
+                    <option name="altres" value="Altres">Altres</option>
+                  </select>
+                </div>
               </div>
               <div class="form-group">
                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
@@ -86,12 +99,20 @@
                   <textarea name="descripcio" cols="75" rows="10" placeholder="Afegeix una descripció de l'esdeveniment" required></textarea></div>
               </div>
               <div class="form-group">
+                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                <div class="col-md-6">
+                  <input type="hidden" class="form-control" id="sessio" name="sessio" value="<%= locals.user.email %>" /></div>
+              </div>
+              <div class="form-group">
                 <div class="col-md-12 text-center">
-                  <button type="submit" class="btn btn-primary btn-lg" id="login">Proposar <span class="glyphicon glyphicon-send"></button>
+                  <button type="submit" class="btn btn-success btn-lg" id="login">Proposar <span class="glyphicon glyphicon-send"></button>
                 </div>
               </div>
             </fieldset>
             </form>
+        </div>
+        <div class="col-md-12 text-center">
+          <a href="/userprofile"><button type="submit" class="btn btn-primary btn-lg">Tornar al perfil <span class="glyphicon glyphicon-arrow-left"></button></a>
         </div>
       </div>
 

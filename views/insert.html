@@ -58,7 +58,20 @@
               <div class="form-group">
                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" id="tipus" name="tipus" placeholder="Tipus " required /></div>
+                  <select class="form-control" name="tipus" required>
+                    <option name="" value="0" selected>Esculli categoria</option>
+                    <option name="cinema" value="1">Cinema</option>
+                    <option name="teatre" value="2">Teatre i Dansa</option>
+                    <option name="gastronomia" value="3">Gastronomia</option>
+                    <option name="esports" value="4">Esports i Aventures</option>
+                    <option name="musicals" value="5">Musicals</option>
+                    <option name="infantils" value="6">Activitats Infantils</option>
+                    <option name="tecnologia" value="7">Ciència i Tecnologia</option>
+                    <option name="festivals" value="8">Fires i Festivals</option>
+                    <option name="musica" value="9">Música</option>
+                    <option name="altres" value="9">Altres</option>
+                  </select>
+                </div>
               </div>
               <div class="form-group">
                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
@@ -97,6 +110,9 @@
               </div>
             </fieldset>
             </form>
+        </div>
+        <div class="col-md-12 text-center">
+          <a href="/adminprofile"><button type="submit" class="btn btn-primary btn-lg">Tornar al perfil</button></a>
         </div>
       </div>
 

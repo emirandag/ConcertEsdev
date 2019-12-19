@@ -85,7 +85,9 @@ router.post('/addSuggested', function(request, response) {
 			preuEntrada: request.body.preuEntrada,
 			entradesDisponibles: request.body.entradesDisponibles,
 			descripcio: request.body.descripcio,
-			dataEsdev: request.body.dataEsdev
+			dataEsdev: request.body.dataEsdev,
+			organitzador: request.body.organitzador,
+			sessio: request.body.sessio
     };
 
 		var nomJson = request.body.nomEsdev;
@@ -192,7 +194,8 @@ router.post('/insertSuggested', function(request, response) {
 			preuEntrada: request.body.preuEntrada,
 			entradesDisponibles: request.body.entradesDisponibles,
 			descripcio: request.body.descripcio,
-			dataEsdev: request.body.dataEsdev
+			dataEsdev: request.body.dataEsdev,
+			organitzador: request.body.organitzador
 		};
 
 		var eliminado = request.body.nomEsdev;
@@ -313,6 +316,7 @@ router.post('/update/:id', function(request, response) {
 		eventos.entradesDisponibles = request.body.entradesDisponibles;
 		eventos.descripcio = request.body.descripcio;
 		eventos.dataEsdev = request.body.dataEsdev;
+		eventos.organitzador = request.body.organitzador;
 
 		eventos.save(function(error, actualizado){
 

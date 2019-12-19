@@ -53,7 +53,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4">
           <h3><%= item.nomEsdev %></h3>
           <figure></figure>
-          <img src="/public/img/cinema.jpg" alt="Icona" width="160" height="145" />
+          <img src="/public/img/<%= item.tipus%>.jpg" alt="Icona" width="160" height="145" />
           <a href="/events/listUser/<%= item._id%>" class="btn btn-info">Detalls... <span class="glyphicon glyphicon-eye-open"></span></a>
           <p><%= item.ubicacio %></p>
         </div>

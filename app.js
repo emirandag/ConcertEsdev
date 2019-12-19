@@ -54,6 +54,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use('/users', require('./controllers/usuaris'));
 app.use('/events', require('./controllers/esdeveniments'));
+app.use('/tickets', require('./controllers/compres'));
 app.use('/', require('./controllers/vistes'));
 app.engine(".html", require("ejs").__express);
 app.set('view engine', 'html');

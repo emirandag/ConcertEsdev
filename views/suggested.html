@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../public/estilos.css">
 </head>
 
 <body>
@@ -43,7 +44,7 @@
               <div class="well well-sm">
                 <form class="form-horizontal" action="/events/insertSuggested" method="post">
                   <fieldset>
-                    <legend class="text-center header">Esdeveniment proposat</legend>
+                    <legend class="text-center header">Esdeveniment proposat per <%= evento.sessio %></legend>
                     <div class="form-group">
                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                       <div class="col-md-6">
@@ -82,7 +83,7 @@
                     <div class="form-group">
                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
                       <div class="col-md-6">
-                        <input type="text" class="form-control" id="organitzador" name="<%= evento.organitzador %>" placeholder="Organitzador de l'esdeveniment" required /></div>
+                        <input type="text" class="form-control" id="organitzador" name="organitzador" value="<%= evento.organitzador %>" placeholder="Organitzador de l'esdeveniment" required /></div>
                     </div>
                     <div class="form-group">
                       <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
@@ -97,6 +98,9 @@
                     </div>
                   </fieldset>
                   </form>
+              </div>
+              <div class="col-md-12 text-center">
+                <a href="/aadminprofile"><button type="submit" class="btn btn-primary btn-lg">Tornar al perfil <span class="glyphicon glyphicon-arrow-left"></button></a>
               </div>
             </div>
 

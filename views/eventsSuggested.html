@@ -44,6 +44,14 @@
       <div class="panel-body">
         <h2>Esdeveniments proposats pels usuaris</h2>
       </div>
+      <div class="nav navbar-nav navbar-right">
+        <form class="navbar-form navbar-left" action="/events/suggested" method="post">
+          <div class="form-group">
+            <input type="text" class="form-control" name="escogido" placeholder="Cerca esdeveniment">
+          </div>
+          <button type="submit" class="btn btn-default">Buscar</button>
+        </form>
+      </div>
       <% if (listado.length > 0) { %>
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-4">
@@ -64,6 +72,7 @@
       <% } else { %>
       <p>¡No hi ha esdeveniments proposats!</p>
       <%  } %>
+
 
     </div>
     <div class="btn btn-primary">

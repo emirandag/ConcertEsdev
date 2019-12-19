@@ -2,14 +2,14 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="/image/png" href="public/img/favicon.png"/>
-<title>ConcertEsdev</title>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../../public/estilos.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="/image/png" href="public/img/favicon.png" />
+  <title>ConcertEsdev</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../public/estilos.css">
 
 </head>
 
@@ -22,46 +22,49 @@
         Si l'usuari ha iniciat sessió li mostrará el nav de logueado amb el botó de logout
         Si no mostrará el nav normal amb les botons d'alta i de login-->
   <% if (locals.user) { %>
-    <%- include layouts/navigationLoggedIn.html %>
+  <%- include layouts/navigationLoggedIn.html %>
   <% } else { %>
-    <%- include layouts/navigation.html %>
+  <%- include layouts/navigation.html %>
   <% } %>
 
   <!-- Es mostra els missatges des de el servidor a les vistes -->
   <% if (locals.messages) {
       if (messages.error) { %>
-      <div class="col-md-10 col-md-offset-1 alert alert-danger"><%= messages.error %></div>
-   <% } else if (messages.success) { %>
-      <div class="col-md-10 col-md-offset-1 alert alert-success"><%= messages.success %></div>
-   <% } else if (messages.info) { %>
-      <div class="col-md-10 col-md-offset-1 alert alert-info"><%= messages.info %></div>
-   <% }
+  <div class="col-md-10 col-md-offset-1 alert alert-danger"><%= messages.error %></div>
+  <% } else if (messages.success) { %>
+  <div class="col-md-10 col-md-offset-1 alert alert-success"><%= messages.success %></div>
+  <% } else if (messages.info) { %>
+  <div class="col-md-10 col-md-offset-1 alert alert-info"><%= messages.info %></div>
+  <% }
     } %>
 
-<div class="col-md-10 col-md-offset-1">
-  <h2>¡Bienvenido a tu perfil!
-    <% if (locals.user) { %>
+  <div class="col-md-10 col-md-offset-1">
+    <h2>¡Bienvenido a tu perfil!
+      <% if (locals.user) { %>
       <%= locals.user.email %>
-    <% } else { %>
+      <% } else { %>
       <%= user.email %>
-    <% } %> <br> Eres el administrador de la web</h2><br><br>
+      <% } %> <br> Eres el administrador de la web</h2><br><br>
 
-  <div class="">
-    <p>Veure els esdeveniments proposats
+    <div class="col-md-5">
+      <p>Veure els esdeveniments proposats</p>
+    </div>
+    <div class="col-md-5">
       <a href="/events/listSuggested" class="btn btn-primary">Proposats</a>
-    </p>
-  </div>
-  <div class="">
-    <p>Veure tots els esdeveniments
+    </div>
+    <div class="col-md-5">
+      <p>Veure tots els esdeveniments</p>
+    </div>
+    <div class="col-md-5">
       <a href="/events/listAll" class="btn btn-primary">Listar esdeveniments</a>
-    </p>
+    </div>
+    <div class="col-md-5">
+      <p>Crear un nou esdeveniment</p>
+    </div>
+    <div class="col-md-5">
+      <a href="/insert" class="btn btn-primary">Crear esdeveniment</a>
+    </div>
   </div>
-  <div class="">
-  <p>Crear un nou esdeveniment
-    <a href="/insert" class="btn btn-primary">Crear esdeveniment</a>
-  </p>
-</div>
-</div>
 
 </body>
 

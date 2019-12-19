@@ -9,7 +9,7 @@ var bcrypt = require('bcrypt');
  * Creació del Schema/Objecte de les compres
  */
 var CompraSchema = mongoose.Schema({
-  idCompra: {
+  codiCompra: {
     type: Number,
     unique: true,
     required: true
@@ -29,6 +29,7 @@ var CompraSchema = mongoose.Schema({
   preuTotal: {
     type: Number,
     required: true
+  }
 });
 
 module.exports = mongoose.model('compres', CompraSchema);
