@@ -151,4 +151,19 @@ router.post('/confirmMail', function(request, response) {
 });
 
 
+router.get('/listUsers', function(request, response) {
+  users.find({}, function(err, users) {
+    if (err) {
+      request.flash("error", '¡Contrasenya incorrecta!');
+      response.locals.messages = request.flash();
+      response.render('../adminprofile');
+    } else {
+      request.flash("info", '¡Aquest son els usuaris registrats a la web!');
+      response.locals.messages = request.flash();
+      response.render('users', {users: users});
+    }
+  });
+});
+
+
 module.exports = router;
