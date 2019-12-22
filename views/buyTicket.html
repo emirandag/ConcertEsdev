@@ -22,14 +22,8 @@
     var a = document.getElementById("cantidad");
     var total = document.getElementById("total");
 
-
     a = parseInt(a.value);
     total = parseInt(total.value);
-
-
-
-
-
 
       function sumar() {
 
@@ -42,7 +36,7 @@
         document.getElementById("cantidad").value = a;
 
         var precio = document.getElementById("precio");
-        precio = precio.textContent;
+        precio = precio.value;
         total = precio*a;
         document.getElementById("total").value = total;
 
@@ -118,31 +112,38 @@
     <div class="col-md-12">
       <form class="" action="/tickets/addCart/<%= buy._id %>" method="post">
       <div class="col-md-1">
-        <p><strong>Codi:</strong></p>
-        <p><strong>Esdeveniment:</strong></p>
-        <p><strong>Preu:</strong></p>
-        <p><strong>Entrades disponibles:</strong></p>
+        <label for="codiEsdev">Codi:</label>
+        <label for="nomEsdev">Esdeveniment:</label>
+        <label for="nomEsdev">Data:</label><br>
+        <label for="preuEntrada">Preu:</label>
+        <label for="entradesDisponibles">Entrades disponibles:</label>
       </div>
-      <div class="col-md-3">
-        <p><%= buy.codiEsdev %></p>
-        <p><%= buy.nomEsdev %></p>
-        <p id="precio"><%= buy.preuEntrada %></p>
-        <br>
-        <input type="text" id="entrada" class="sinborde" name="entrada" value="<%= buy.entradesDisponibles %>" readonly>
+      <div class="col-md-3" style="font-size:16px;">
+        <input type="text" class="sinborde" name="codiEsdev" value="<%= buy.codiEsdev %>" readonly>
+        <input type="text" class="sinborde" name="nomEsdev" value="<%= buy.nomEsdev %>" readonly>
+        <input type="text" class="sinborde" name="dataEsdev" value="<%= buy.dataEsdev %>" readonly>
+        <input type="text" id="precio" class="sinborde" name="preuEntrada" value="<%= buy.preuEntrada %>" readonly>€<br><br>
+        <input type="text" id="entrada" class="sinborde" name="entradesDisponibles" value="<%= buy.entradesDisponibles %>" readonly>
+        <input type="hidden" name="tipus" value="<%= buy.tipus %>">
+        <input type="hidden" name="ubicacio" value="<%= buy.ubicacio %>">
+        <input type="hidden" name="descripcio" value="<%= buy.descripcio %>">
+        <input type="hidden" name="organitzador" value="<%= buy.organitzador %>">
+        <input type="hidden" name="id" value="<%= buy._id %>">
+
       </div>
       <div class="col-md-3" style="text-align: center;">
         <h3>Cantidad de entradas</h3>
 
-        <input type="text" id="cantidad" class="sinborde" name="cantidad" value="0" readonly style="text-align: center;">
+        <input type="text" id="cantidad" class="sinborde" name="numEntrada" value="0" readonly style="text-align: center;">
 
       </div>
       <div class="col-md-3" style="text-align: center;">
         <h3>Precio Total</h3>
-        <input type="text" id="total" class="sinborde" name="total" value="0" readonly style="text-align: center;"> €
+        <input type="text" id="total" class="sinborde" name="preuTotal" value="0" readonly style="text-align: center;"> €
       </div>
       <div class="col-md-2"><br>
         <button class="btn btn-info" type="submit" name="button">Afegir a la cistella <span class="glyphicon glyphicon-shopping-cart"></button><br><br>
-        <button class="btn btn-success" type="submit" name="button" formaction="">Comprar entrades <span class="glyphicon glyphicon-euro"></button><br><br>
+        <button class="btn btn-success" type="submit" name="button" formaction="/tickets/buyTicket">Comprar entrades <span class="glyphicon glyphicon-euro"></button><br><br>
           <!--
         <a href="/tickets/addCart/<%= buy._id %>"><button class="btn btn-info" type="button" name="button">Afegir a la cistella <span class="glyphicon glyphicon-shopping-cart"></button></a><br><br>
         <a href="#"><button class="btn btn-success" type="button" name="button">Comprar entrades <span class="glyphicon glyphicon-euro"></button></a>

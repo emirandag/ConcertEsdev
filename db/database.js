@@ -3,7 +3,8 @@ var url = 'mongodb://localhost:27017/concertesdev';
 
 var db = mongoose.connect(url,{
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false 
 }).then(() =>{
   console.log('Connectat a la base de dades concertesdev');
 }).catch((error) =>{

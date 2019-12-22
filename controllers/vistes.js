@@ -79,5 +79,9 @@ router.get('/confirmMail', function(req, resp) {
   resp.render('confirmMail', {});
 });
 
+router.get('/prueba', function(req, resp) {
+  resp.render('prueba', {});
+});
+
 
 module.exports = router;

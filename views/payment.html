@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="/image/png" href="public/img/favicon.png" />
+  <title>ConcertEsdev</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../public/estilos.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="well well-sm">
+            <form class="form-horizontal" action="/tickets/payment" method="post">
+              <fieldset>
+                <legend class="text-center header"><h2>Realitzar pagament</h2></legend>
+
+                <div class="form-group">
+                  <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+
+                  <div class="col-md-6">
+
+                    <label for="numEntrada" style="font-size:22px;">Dades del esdeveniment</label>
+                <div class="form-group">
+                  <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                  <div class="col-md-12">
+                    <label for="codiEsdev">Codi esdeveniment</label>
+                    <input type="text" class="form-control" id="codiEsdev" name="codiEsdev" value="<%= evento.codiEsdev %>" readonly /></div>
+                </div>
+                <div class="form-group">
+                  <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                  <div class="col-md-12">
+                    <label for="codiEsdev">Esdeveniment</label>
+                    <input type="text" class="form-control" id="nomEsdev" name="nomEsdev" value="<%= evento.nomEsdev %>" readonly /></div>
+                </div>
+                <div class="form-group">
+                  <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                  <div class="col-md-12">
+                    <label for="tipus">Categoria</label>
+                    <input type="text" class="form-control" id="tipus" name="tipus" value="<%= evento.tipus %>" readonly/></div>
+                </div>
+                <div class="form-group">
+                  <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                  <div class="col-md-12">
+                    <label for="tipus">Direcció</label>
+                    <input type="text" class="form-control" id="ubicacio" name="ubicacio" value="<%= evento.ubicacio %>" placeholder="Direcció" readonly /></div>
+                </div>
+                <div class="form-group">
+                  <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                  <div class="col-md-12">
+                    <label for="tipus">Preu</label>
+                    <input type="text" class="form-control" id="preuEntrada" name="preuEntrada" value="<%= evento.preuEntrada %>" readonly /></div>
+                </div>
+
+                <div class="form-group">
+                  <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                  <div class="col-md-12">
+                    <label for="organitzador">Data</label>
+                    <input type="date" class="form-control" id="dataEsdev" name="dataEsdev" value="<%= evento.dataEsdev %>" placeholder="Data de l'esdeveniment" readonly /></div>
+                </div>
+
+                <div class="form-group">
+                  <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                  <div class="col-md-12">
+                    <label for="organitzador">Organitzador</label>
+                    <input type="text" class="form-control" id="organitzador" name="organitzador" value="<%= evento.organitzador %>" placeholder="Organitzador de l'esdeveniment" readonly /></div>
+                </div>
+
+                <div class="form-group">
+                  <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                  <div class="col-md-6">
+                    <input type="hidden" class="form-control" id="entradesDisponibles" name="entradesDisponibles" value="<%= evento.entradesDisponibles %>" />
+                    <input type="hidden" class="form-control" id="descripcio" name="descripcio" value="<%= evento.descripcio %>" />
+                    <input type="hidden" class="form-control" name="id" value="<%= evento.id %>" />
+                  </div>
+                </div>
+
+</div>
+      </div>
+                <div class="form-group">
+                  <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+
+                  <div class="col-md-6">
+
+                    <label for="numEntrada" style="font-size:22px;">Targeta de pagament</label>
+                    <div class="form-group">
+                      <span class="text-center"><i class="fa fa-user bigicon"></i></span>
+                      <div class="col-md-12">
+                        <label for="nomTargeta"><span class="glyphicon glyphicon-user"></span> Nom del titular</label>
+                        <input type="text" class="form-control" id="nomTargeta" name="nomTargeta" value="" required /></div>
+                    </div>
+                    <div class="form-group">
+                      <span class="text-center"><i class="fa fa-user bigicon"></i></span>
+                      <div class="col-md-12">
+                        <label for="targetaPagament"><span class="glyphicon glyphicon-credit-card"></span> Nombre de targeta</label>
+                        <input type="text" class="form-control" id="targetaPagament" name="targetaPagament" value="" required /></div>
+                    </div>
+                    <div class="form-group">
+                      <span class="text-center"><i class="fa fa-user bigicon"></i></span>
+                      <div class="col-md-6">
+                        <label for="caducitat"><span class="glyphicon glyphicon-calendar"></span> Data de caducitat</label>
+                        <div class="form-group">
+                          <span class="text-center"><i class="fa fa-user bigicon"></i></span>
+                        <div class="col-md-5">
+                          <input type="text" class="form-control" id="mes" name="mes" value="" required />
+                        </div>
+                        <div class="col-md-5">
+                          <input type="text" class="form-control" id="any" name="any" value="" required />
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                      </div>
+                      <div class="col-md-3">
+                        <label for="targeta"><span class="glyphicon glyphicon-lock"></span> CVC</label>
+                        <div class="form-group">
+                          <span class="text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-12">
+                              <input type="text" class="form-control" id="cvc" name="cvc" value="" required />
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+
+                    <div class="col-md-6">
+
+                      <label for="numEntrada" style="font-size:22px;">Dades de compra</label>
+                      <div class="form-group">
+                        <span class="text-center"><i class="fa fa-user bigicon"></i></span>
+                        <div class="col-md-6">
+                          <label for="numEntrada">Quantitat d'entrades</label>
+                          <input type="text" class="form-control" id="numEntrada" name="numEntrada" value="<%= compra.numEntrada %>" placeholder="Organitzador de l'esdeveniment" readonly /></div>
+                      </div>
+                <div class="form-group">
+                  <span class="text-center"><i class="fa fa-user bigicon"></i></span>
+                  <div class="col-md-6" style="font-size: 18px">
+                    <label for="numEntrada">Total a pagar <span class="glyphicon glyphicon-euro"></span></label>
+
+                    <input type="text" style="font-size: 30px" class="form-control" id="preuTotal" name="preuTotal" value="<%= compra.preuTotal %>" readonly /></div>
+                </div>
+              </div>
+              </div>
+
+                <div class="form-group">
+                  <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-success btn-lg" id="accept">Finalitzar pago <span class="glyphicon glyphicon-ok"></span></button>
+                    <button type="submit" class="btn btn-danger btn-lg" id="delete" formaction="/events/deleteSuggested">Eliminar transacció <span class="glyphicon glyphicon-remove"></span></button>
+                  </div>
+                </div>
+
+              </fieldset>
+              </form>
+          </div>
+          <div class="col-md-12 text-center">
+            <a href="/aadminprofile"><button type="submit" class="btn btn-primary btn-lg">Tornar al perfil <span class="glyphicon glyphicon-arrow-left"></button></a>
+          </div>
+        </div>
+  </body>
+</html>

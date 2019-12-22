@@ -46,8 +46,18 @@
                    tipos.forEach(function(tipo){ %>
                 <div class="panel panel-default">
                   <div class="col-md-12 panel-body">
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                       <h2><%= tipo.nomEsdev %></h2>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="col-md-12 text-center">
+                          <% if (tipo.entradesDisponibles > 0 ) { %>
+                            <a href="/tickets/buyTicket/<%= tipo._id %>"><button type="submit" class="btn btn-success btn-lg">Gestionar entrades</button></a>
+                          <% } else { %>
+                            <a href="#"><button type="button" class="btn btn-danger btn-lg">Entrades agotades</button></a>
+                          <% } %>
+
+                        </div>
                     </div>
                   </div>
                   <div class="row">
@@ -72,8 +82,13 @@
                         <% } %>
 
                         <% if (tipo.entradesDisponibles != null) { %>
-                          <h5><strong>Preu entrada</strong></h5>
-                          <p><%= tipo.entradesDisponibles %></p>
+                          <h5><strong>Entrades disponibles</strong></h5>
+                          <% if (tipo.entradesDisponibles > 0) { %>
+                            <p><%= tipo.entradesDisponibles %></p>
+                          <% } else { %>
+                            <p>Entrades agotades</p>
+                          <% } %>
+
                         <% } %>
                         <h5><strong>Fecha</strong></h5>
                         <p><%= tipo.dataEsdev %></p>
