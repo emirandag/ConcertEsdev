@@ -1,0 +1,32 @@
+<div class="col-md-10 col-md-offset-1">
+  <h2>¡Bienvenido a tu perfil!
+    <% if (locals.user) { %>
+    <%= locals.user.email %>
+    <% } else { %>
+    <%= user.email %>
+    <% } %> <br> Eres el administrador de la web</h2><br><br>
+  <div class="col-md-5">
+    <p>Veure els esdeveniments proposats</p>
+  </div>
+  <div class="col-md-5">
+    <a href="/events/listSuggested" class="btn btn-primary">Proposats</a>
+  </div>
+  <div class="col-md-5">
+    <p>Veure tots els esdeveniments</p>
+  </div>
+  <div class="col-md-5">
+    <a href="/events/listAll" class="btn btn-primary">Listar esdeveniments</a>
+  </div>
+  <div class="col-md-5">
+    <p>Crear un nou esdeveniment</p>
+  </div>
+  <div class="col-md-5">
+    <a href="/insert" class="btn btn-primary">Crear esdeveniment</a>
+  </div>
+  <div class="col-md-5">
+    <p>Veure els usuaris registrats</p>
+  </div>
+  <div class="col-md-5">
+    <a href="/users/listUsers" class="btn btn-primary">Listar usuaris</a>
+  </div>
+</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

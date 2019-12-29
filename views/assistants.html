@@ -1,0 +1,36 @@
+<section id="seccio2" class="container">
+
+  <div class="panel panel-default">
+    <div class="col-md-12 panel-body">
+      <div class="col-md-12">
+        <h2><%= listado.codiEsdev %>
+          <p><%= listado.nomEsdev %></p>
+        </h2>
+      </div>
+    </div>
+
+    <% if (listado.assistents != undefined ) { %>
+    <div class="row">
+      <div class="col-xs-12">
+        <table id="tabla">
+          <tr>
+            <th>Nom assistent</th>
+            <th>Correu assistent</th>
+          </tr>
+          <% listado.assistents.forEach(function(item){ %>
+          <tr>
+            <td><%= item.usuari %></td>
+            <td><%= item.email %></td>
+          </tr>
+          <% }); %>
+        </table>
+      </div>
+    </div>
+    <% } else { %>
+    <p>¡No hi ha usuaris registrats a aquest esdeveniment!</p>
+    <% }%>
+  </div>
+  <div class="btn btn-primary">
+    <a href="/events/listAll"><span class="glyphicon glyphicon-arrow-left"></span> Tornar al llistat</a>
+  </div>
+</section>

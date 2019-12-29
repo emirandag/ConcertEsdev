@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="/image/png" href="public/img/favicon.png"/>
+    <title>ConcertEsdev</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../public/css/estilos.css">
+    <script type="text/javascript" src="../../public/js/menu.js"></script>
+  </head>
+  <body>
+    <!-- S'inclos el header des de la carpeta partials -->
+    <%- include partials/header.html %>
+
+    <!-- S'inclos el nav des de la carpeta partials
+          Si l'usuari ha iniciat sessió li mostrará el nav de logueado amb el botó de tancar sessió
+          Si no mostrará el nav normal amb les botons d'alta i de login-->
+    <% if (locals.user) { %>
+      <%- include partials/navigationLoggedIn.html %>
+    <% } else { %>
+      <%- include partials/navigation.html %>
+    <% } %>
+
+
+    <!-- Es mostra els missatges des de el servidor a les vistes -->
+    <% if (locals.messages) {
+        if (messages.error) { %>
+        <div class="col-md-10 col-md-offset-1 alert alert-danger"><%= messages.error %></div>
+     <% } else if (messages.success) { %>
+        <div class="col-md-10 col-md-offset-1 alert alert-success"><%= messages.success %></div>
+     <% } else if (messages.info) { %>
+        <div class="col-md-10 col-md-offset-1 alert alert-info"><%= messages.info %></div>
+     <% }
+   } %><br><br><br>
+
+    <%- body %>
+
+    <!-- S'inclos el footer des de la carpeta partials -->
+    <%- include partials/footer.html %>
+  </body>
+</html>

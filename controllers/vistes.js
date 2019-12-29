@@ -27,7 +27,7 @@ router.get('/userprofile',function(req,resp){
   if (req.session.user == "admin@concertesdev.com") {
     resp.redirect('adminprofile');
   } else if (req.session.user) {
-    resp.render('userprofile');
+    resp.render('users/userprofile');
   } else {
     resp.render('login');
   }
@@ -35,7 +35,7 @@ router.get('/userprofile',function(req,resp){
 
 router.get('/adminprofile',function(req,resp){
   if (req.session.user.email == "admin@concertesdev.com") {
-    resp.render('adminprofile');
+    resp.render('users/adminprofile');
   } else if (req.session.user) {
     resp.redirect('userprofile');
   } else {

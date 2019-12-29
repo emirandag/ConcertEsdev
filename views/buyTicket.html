@@ -1,156 +1,150 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="/image/png" href="public/img/favicon.png" />
-  <title>ConcertEsdev</title>
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="../../public/estilos.css">
-  <style>
-    .sinborde {
-      border: 0;
+<script type="text/javascript">
+  var a = document.getElementById("cantidad");
+  var total = document.getElementById("total");
+
+  a = parseInt(a.value);
+  total = parseInt(total.value);
+
+  function sumar() {
+
+    var entrada = document.getElementById("entrada");
+    entrada = parseInt(entrada.value);
+
+    var precio = document.getElementById("precio");
+    precio = precio.value;
+
+    if (entrada > 0) {
+
+      a = a + 1;
+
+      document.getElementById("cantidad").value = a;
+
+
+      total = precio * a;
+      document.getElementById("total").value = total;
+
+      entrada = entrada - 1;
+      document.getElementById("entrada").value = entrada;
+
+    } else if (precio > 0 && Number.isNaN(entrada)) {
+      a = a + 1;
+
+      document.getElementById("cantidad").value = a;
+
+      total = precio * a;
+      document.getElementById("total").value = total;
+
+    } else {
+      alert('¡Ho sentim!\nNo hi ha entrades disponibles');
     }
-    #total {
-      font-size: 20px;
-    }
-  </style>
-  <script type="text/javascript">
 
-    var a = document.getElementById("cantidad");
-    var total = document.getElementById("total");
+  }
 
-    a = parseInt(a.value);
-    total = parseInt(total.value);
+  function restar() {
 
-      function sumar() {
+    var precio = document.getElementById("precio");
+    precio = precio.value;
 
-        var entrada = document.getElementById("entrada");
-        entrada = parseInt(entrada.value);
+    var entrada = document.getElementById("entrada");
+    entrada = parseInt(entrada.value);
 
-        if (entrada > 0) {
-          a = a + 1;
+    if (a > 0) {
+
+      if (precio > 0 && Number.isNaN(entrada)) {
+
+        a = a - 1;
 
         document.getElementById("cantidad").value = a;
 
-        var precio = document.getElementById("precio");
-        precio = precio.value;
-        total = precio*a;
+        total = precio * a;
         document.getElementById("total").value = total;
-
-
-        entrada = entrada-1;
-        document.getElementById("entrada").value = entrada;
       } else {
-        alert('¡Ho sentim!\nNo hi ha entrades disponibles');
-      }
-
-      }
-      function restar() {
-
-        if(a > 0) {
         a = a - 1;
         document.getElementById("cantidad").value = a;
 
-        var precio = document.getElementById("precio");
-        precio = precio.textContent;
-        total = precio*a;
+        total = precio * a;
         document.getElementById("total").value = total;
 
-        var entrada = document.getElementById("entrada");
-        entrada = parseInt(entrada.value);
-        entrada = entrada+1;
+        entrada = entrada + 1;
         document.getElementById("entrada").value = entrada;
-
-        }
-
-
 
       }
 
-  </script>
-</head>
-  <body>
-    <h1>Pot comprar les teves entrades</h1>
-<!--
-    <table id="tabla">
-      <tr>
-        <th>Codi</th>
-        <th>Esdeveniment</th>
-        <th>Preu</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th>Total</th>
-      </tr>
-      <tr>
-        <td><%= buy.codiEsdev %></td>
-        <td><%= buy.nomEsdev %></td>
-        <td id="precio"><%= buy.preuEntrada %></td>
-        <td><button class="btn btn-success" type="button" id="sumar" onclick="sumar()"><span class="glyphicon glyphicon-plus"></span></button></td>
-        <td><input type="text" id="cantidad" name="cantidad" value="0" readonly></td>
-        <td><button class="btn btn-danger" type="button" id="restar" onclick="restar()"><span class="glyphicon glyphicon-minus"></span></button></td>
-        <td></td>
-        <td><input type="text" id="total" name="total" value="0" readonly> €</td>
-      </tr>
-    </table>
--->
-    <div class="col-md-12">
-      <div class="col-md-4"></div>
-      <div class="col-md-3" style="text-align: center;">
-        <button class="btn btn-success" type="button" id="sumar" onclick="sumar()"><span class="glyphicon glyphicon-plus"></span></button>
-        <input type="text" class="sinborde" name="cantidad" value="" readonly>
-        <button class="btn btn-danger" type="button" id="restar" onclick="restar()"><span class="glyphicon glyphicon-minus"></span></button>
+    }
 
-      </div>
-
+  }
+</script>
+<section id="seccio2" class="container">
+  <div class="panel panel-default">
+    <div class="col-md-12 panel-body">
+      <h2>Agafa les teves entrades</h2>
     </div>
+    <div class="row">
+      <div class="col-md-12"></div>
+      <div class="col-md-12">
+        <div class="col-md-5"></div>
+        <div class="col-md-2" style="text-align: center;">
+          <button class="btn btn-success" type="button" id="sumar" onclick="sumar()"><span class="glyphicon glyphicon-plus"></span></button>
+          <button class="btn btn-danger" type="button" id="restar" onclick="restar()"><span class="glyphicon glyphicon-minus"></span></button>
+        </div>
+        <div class="col-md-5"></div>
+      </div>
+      <div class="col-md-12">
+        <form class="" action="/tickets/buyTicket" method="post">
+          <div class="col-md-1">
+            <label for="codiEsdev">Codi:</label>
+            <label for="nomEsdev">Esdeveniment:</label>
+            <label for="nomEsdev">Data:</label><br>
+            <label for="preuEntrada">Preu:</label>
+            <% if (buy.entradesDisponibles != null) { %>
+            <% if (buy.entradesDisponibles > 0) { %>
+            <label for="entradesDisponibles">Entrades disponibles:</label>
+            <% } else { %>
+            <p>Entrades agotades</p>
+            <% } %>
+            <% } else { %>
+            <label for="entradesDisponibles"></label>
+            <% } %>
+          </div>
+          <div class="col-md-1">
 
-    <div class="col-md-12">
-      <form class="" action="/tickets/addCart/<%= buy._id %>" method="post">
-      <div class="col-md-1">
-        <label for="codiEsdev">Codi:</label>
-        <label for="nomEsdev">Esdeveniment:</label>
-        <label for="nomEsdev">Data:</label><br>
-        <label for="preuEntrada">Preu:</label>
-        <label for="entradesDisponibles">Entrades disponibles:</label>
+          </div>
+          <div class="col-md-3" style="font-size:15px;">
+            <input type="text" class="sinborde" name="codiEsdev" value="<%= buy.codiEsdev %>" readonly>
+            <input type="text" class="sinborde" name="nomEsdev" value="<%= buy.nomEsdev %>" readonly>
+            <input type="text" class="sinborde" name="dataEsdev" value="<%= buy.dataEsdev %>" readonly>
+            <input type="text" id="precio" class="sinborde" name="preuEntrada" value="<%= buy.preuEntrada %>" size="4" readonly>€<br><br>
+            <% if (buy.entradesDisponibles != null) { %>
+            <% if (buy.entradesDisponibles > 0) { %>
+            <input type="text" id="entrada" class="sinborde" name="entradesDisponibles" value="<%= buy.entradesDisponibles %>" readonly>
+            <% } else { %>
+            <p>Entrades agotades</p>
+            <% } %>
+            <% } else { %>
+            <input type="text" id="entrada" class="sinborde" name="entradesDisponibles" value="" readonly>
+            <% } %>
+            <input type="hidden" name="tipus" value="<%= buy.tipus %>">
+            <input type="hidden" name="ubicacio" value="<%= buy.ubicacio %>">
+            <input type="hidden" name="descripcio" value="<%= buy.descripcio %>">
+            <input type="hidden" name="organitzador" value="<%= buy.organitzador %>">
+            <input type="hidden" name="id" value="<%= buy._id %>">
+          </div>
+          <div class="col-md-2" style="text-align: center;">
+            <h3>Quantitat</h3>
+            <input type="text" id="cantidad" class="sinborde" name="numEntrada" value="0" readonly style="text-align: center;">
+          </div>
+          <div class="col-md-3" style="text-align: center;">
+            <h3>Preu Total</h3>
+            <input type="text" id="total" class="sinborde" name="preuTotal" value="0" readonly size="5" style="text-align: center;"><span class="glyphicon glyphicon-euro">
+          </div>
+          <div class="col-md-2"><br>
+            <button class="btn btn-success" type="submit" name="button">Comprar entrades <span class="glyphicon glyphicon-euro"></button><br><br>
+          </div>
+        </form>
       </div>
-      <div class="col-md-3" style="font-size:16px;">
-        <input type="text" class="sinborde" name="codiEsdev" value="<%= buy.codiEsdev %>" readonly>
-        <input type="text" class="sinborde" name="nomEsdev" value="<%= buy.nomEsdev %>" readonly>
-        <input type="text" class="sinborde" name="dataEsdev" value="<%= buy.dataEsdev %>" readonly>
-        <input type="text" id="precio" class="sinborde" name="preuEntrada" value="<%= buy.preuEntrada %>" readonly>€<br><br>
-        <input type="text" id="entrada" class="sinborde" name="entradesDisponibles" value="<%= buy.entradesDisponibles %>" readonly>
-        <input type="hidden" name="tipus" value="<%= buy.tipus %>">
-        <input type="hidden" name="ubicacio" value="<%= buy.ubicacio %>">
-        <input type="hidden" name="descripcio" value="<%= buy.descripcio %>">
-        <input type="hidden" name="organitzador" value="<%= buy.organitzador %>">
-        <input type="hidden" name="id" value="<%= buy._id %>">
-
-      </div>
-      <div class="col-md-3" style="text-align: center;">
-        <h3>Cantidad de entradas</h3>
-
-        <input type="text" id="cantidad" class="sinborde" name="numEntrada" value="0" readonly style="text-align: center;">
-
-      </div>
-      <div class="col-md-3" style="text-align: center;">
-        <h3>Precio Total</h3>
-        <input type="text" id="total" class="sinborde" name="preuTotal" value="0" readonly style="text-align: center;"> €
-      </div>
-      <div class="col-md-2"><br>
-        <button class="btn btn-info" type="submit" name="button">Afegir a la cistella <span class="glyphicon glyphicon-shopping-cart"></button><br><br>
-        <button class="btn btn-success" type="submit" name="button" formaction="/tickets/buyTicket">Comprar entrades <span class="glyphicon glyphicon-euro"></button><br><br>
-          <!--
-        <a href="/tickets/addCart/<%= buy._id %>"><button class="btn btn-info" type="button" name="button">Afegir a la cistella <span class="glyphicon glyphicon-shopping-cart"></button></a><br><br>
-        <a href="#"><button class="btn btn-success" type="button" name="button">Comprar entrades <span class="glyphicon glyphicon-euro"></button></a>
-          -->
-      </div>
-      </form>
     </div>
-
-  </body>
-</html>
+  </div>
+  <div class="btn btn-primary">
+    <a href="/events/listUser/<%= buy._id%>"><span class="glyphicon glyphicon-arrow-left"></span> Tornar al esdeveniment</a>
+  </div>
+</section>

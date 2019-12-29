@@ -103,7 +103,7 @@ router.post('/login', function(request, response, next){
 
           request.flash("success", '¡Has iniciat sessió correctament!');
           response.locals.messages = request.flash();
-          response.render('adminprofile', {user: user});
+          response.render('users/adminprofile', {user: user});
           request.session.user = user;
           request.session.save(function (user) {
             request.session.user = user;
@@ -115,7 +115,7 @@ router.post('/login', function(request, response, next){
             //response.locals.user = request.session.user;
             request.flash("success", '¡Has iniciat sessió correctament!');
             response.locals.messages = request.flash();
-            response.render('userprofile', {user: user});
+            response.render('users/userprofile', {user: user});
             request.session.user = user;
             request.session.save(function (user) {
               request.session.user = user;

@@ -90,10 +90,19 @@
   color: white;
 }
 
+.sinborde {
+  border: 0;
+}
+#total {
+  font-size: 20px;
+}
 
-        /*
-        .navbar {
-  margin-bottom: 0px;
-  border: 0px;
+.dropdown-submenu {
+  position: relative;
+}
 
-        */
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}

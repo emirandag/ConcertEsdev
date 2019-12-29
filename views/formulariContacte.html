@@ -1,91 +1,53 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <link rel="icon" type="/image/png" href="public/img/favicon.png"/>
-<title>ConcertEsdev</title>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
- <link rel="stylesheet" type="text/css" href="public/estilos.css">
-  </head>
-    <body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well well-sm">
+        <form class="form-horizontal" method="post">
+          <fieldset>
+            <legend class="text-center header">Contacte amb nosaltres</legend>
 
-      <!-- S'inclos el header des de la carpeta layouts -->
-      <%- include layouts/header.html %>
-
-      <!-- S'inclos el nav des de la carpeta layouts
-            Si l'usuari ha iniciat sessió li mostrará el nav de logueado amb el botó de logout
-            Si no mostrará el nav normal amb les botons d'alta i de login-->
-      <% if (locals.user) { %>
-        <%- include layouts/navigationLoggedIn.html %>
-      <% } else { %>
-        <%- include layouts/navigation.html %>
-      <% } %>
-
-        <!-- Es mostra els missatges des de el servidor a les vistes -->
-        <% if (locals.messages) {
-            if (messages.error) { %>
-            <div class="col-md-10 col-md-offset-1 alert alert-danger"><%= messages.error %></div>
-         <% } else if (messages.success) { %>
-            <div class="col-md-10 col-md-offset-1 alert alert-success"><%= messages.success %></div>
-         <% } else if (messages.info) { %>
-            <div class="col-md-10 col-md-offset-1 alert alert-info"><%= messages.info %></div>
-         <% }
-          } %>
-
-
-       <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="well well-sm">
-                <form class="form-horizontal" method="post">
-                    <fieldset>
-                        <legend class="text-center header">Contacte amb nosaltres</legend>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="fname" name="name" type="text" placeholder="Nom" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="lname" name="name" type="text" placeholder="Cognoms" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="email" name="email" type="text" placeholder="Adreça electrònica" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
-                            <div class="col-md-8">
-                                <input id="phone" name="phone" type="text" placeholder="Telèfon" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
-                            <div class="col-md-8">
-                                <textarea class="form-control" id="message" name="message" placeholder="Escriu la vostra sugerència o consulta.." rows="7"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-8">
+                <input id="fname" name="name" type="text" placeholder="Nom" class="form-control">
+              </div>
             </div>
-        </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-8">
+                <input id="lname" name="name" type="text" placeholder="Cognoms" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+              <div class="col-md-8">
+                <input id="email" name="email" type="text" placeholder="Adreça electrònica" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
+              <div class="col-md-8">
+                <input id="phone" name="phone" type="text" placeholder="Telèfon" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
+              <div class="col-md-8">
+                <textarea class="form-control" id="message" name="message" placeholder="Escriu la vostra sugerència o consulta.." rows="7"></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
     </div>
+  </div>
 </div>

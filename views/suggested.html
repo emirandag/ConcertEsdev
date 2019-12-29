@@ -1,109 +1,68 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <title>ConcertEsdev</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="../../public/estilos.css">
-</head>
-
-<body>
-
-  <!-- S'inclos el header des de la carpeta layouts -->
-  <%- include layouts/header.html %>
-
-  <!-- S'inclos el nav des de la carpeta layouts
-        Si l'usuari ha iniciat sessió li mostrará el nav de logueado amb el botó de logout
-        Si no mostrará el nav normal amb les botons d'alta i de login-->
-  <% if (locals.user) { %>
-    <%- include layouts/navigationLoggedIn.html %>
-  <% } else { %>
-    <%- include layouts/navigation.html %>
-  <% } %>
-
-
-  <!-- Es mostra els missatges des de el servidor a les vistes -->
-  <% if (locals.messages) {
-      if (messages.error) { %>
-      <div class="col-md-10 col-md-offset-1 alert alert-danger"><%= messages.error %></div>
-   <% } else if (messages.success) { %>
-      <div class="col-md-10 col-md-offset-1 alert alert-success"><%= messages.success %></div>
-   <% } else if (messages.info) { %>
-      <div class="col-md-10 col-md-offset-1 alert alert-info"><%= messages.info %></div>
-   <% }
-    } %>
-
-
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="well well-sm">
-                <form class="form-horizontal" action="/events/insertSuggested" method="post">
-                  <fieldset>
-                    <legend class="text-center header">Esdeveniment proposat per <%= evento.sessio %></legend>
-                    <div class="form-group">
-                      <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                      <div class="col-md-6">
-                        <input type="text" class="form-control" id="codiEsdev" name="codiEsdev" value="<%= evento.codiEsdev %>" placeholder="Codi" required /></div>
-                    </div>
-                    <div class="form-group">
-                      <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                      <div class="col-md-6">
-                        <input type="text" class="form-control" id="nomEsdev" name="nomEsdev" value="<%= evento.nomEsdev %>" placeholder="Nom " required /></div>
-                    </div>
-                    <div class="form-group">
-                      <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                      <div class="col-md-6">
-                        <input type="text" class="form-control" id="tipus" name="tipus" value="<%= evento.tipus %>" placeholder="Tipus " required /></div>
-                    </div>
-                    <div class="form-group">
-                      <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                      <div class="col-md-6">
-                        <input type="text" class="form-control" id="ubicacio" name="ubicacio" value="<%= evento.ubicacio %>" placeholder="Direcció" required /></div>
-                    </div>
-                    <div class="form-group">
-                      <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                      <div class="col-md-6">
-                        <input type="text" class="form-control" id="preuEntrada" name="preuEntrada" value="<%= evento.preuEntrada %>" placeholder="Preu entrada (0 si és gratuït)" pattern="[0-9]{0,30}" required /></div>
-                    </div>
-                    <div class="form-group">
-                      <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                      <div class="col-md-6">
-                        <input type="text" class="form-control" id="entradesDisponibles" name="entradesDisponibles" value="<%= evento.entradesDisponibles %>" placeholder="Entrades disponibles (Opcional si hi ha aforament màxim)" pattern="[0-9]{0,30}" /></div>
-                    </div>
-                    <div class="form-group">
-                      <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                      <div class="col-md-6">
-                        <input type="date" class="form-control" id="dataEsdev" name="dataEsdev" value="<%= evento.dataEsdev %>" placeholder="Data de l'esdeveniment" required /></div>
-                    </div>
-                    <div class="form-group">
-                      <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                      <div class="col-md-6">
-                        <input type="text" class="form-control" id="organitzador" name="organitzador" value="<%= evento.organitzador %>" placeholder="Organitzador de l'esdeveniment" required /></div>
-                    </div>
-                    <div class="form-group">
-                      <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                      <div class="col-md-6">
-                        <textarea name="descripcio" cols="75" rows="10" required ><%= evento.descripcio %></textarea></div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-success btn-lg" id="accept">Aceptar proposta <span class="glyphicon glyphicon-ok"></span></button>
-                        <button type="submit" class="btn btn-danger btn-lg" id="delete" formaction="/events/deleteSuggested">Eliminar proposta <span class="glyphicon glyphicon-remove"></span></button>
-                      </div>
-                    </div>
-                  </fieldset>
-                  </form>
-              </div>
-              <div class="col-md-12 text-center">
-                <a href="/aadminprofile"><button type="submit" class="btn btn-primary btn-lg">Tornar al perfil <span class="glyphicon glyphicon-arrow-left"></button></a>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well well-sm">
+        <form class="form-horizontal" action="/events/insertSuggested" method="post">
+          <fieldset>
+            <legend class="text-center header">Esdeveniment proposat per <%= evento.sessio %></legend>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="codiEsdev" name="codiEsdev" value="<%= evento.codiEsdev %>" placeholder="Codi" required /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="nomEsdev" name="nomEsdev" value="<%= evento.nomEsdev %>" placeholder="Nom " required /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="tipus" name="tipus" value="<%= evento.tipus %>" placeholder="Tipus " required /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="ubicacio" name="ubicacio" value="<%= evento.ubicacio %>" placeholder="Direcció" required /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="preuEntrada" name="preuEntrada" value="<%= evento.preuEntrada %>" placeholder="Preu entrada (0 si és gratuït)" pattern="[0-9]{0,30}" required /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="entradesDisponibles" name="entradesDisponibles" value="<%= evento.entradesDisponibles %>" placeholder="Entrades disponibles (Opcional si hi ha aforament màxim)" pattern="[0-9]{0,30}" />
               </div>
             </div>
-
-</body>
-
-</html>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="date" class="form-control" id="dataEsdev" name="dataEsdev" value="<%= evento.dataEsdev %>" placeholder="Data de l'esdeveniment" required /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="organitzador" name="organitzador" value="<%= evento.organitzador %>" placeholder="Organitzador de l'esdeveniment" required /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <textarea name="descripcio" cols="75" rows="10" required><%= evento.descripcio %></textarea></div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-success btn-lg" id="accept">Aceptar proposta <span class="glyphicon glyphicon-ok"></span></button>
+                <button type="submit" class="btn btn-danger btn-lg" id="delete" formaction="/events/deleteSuggested">Eliminar proposta <span class="glyphicon glyphicon-remove"></span></button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="col-md-12 text-center">
+        <a href="/aadminprofile"><button type="submit" class="btn btn-primary btn-lg">Tornar al perfil <span class="glyphicon glyphicon-arrow-left"></button></a>
+      </div>
+    </div>
+  </div>
+</div>

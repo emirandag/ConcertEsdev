@@ -1,123 +1,79 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="/image/png" href="public/img/favicon.png"/>
-<title>ConcertEsdev</title>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="public/estilos.css">
-
-</head>
-
-<body>
-
-  <!-- S'inclos el header des de la carpeta layouts -->
-  <%- include layouts/header.html %>
-
-  <!-- S'inclos el nav des de la carpeta layouts
-        Si l'usuari ha iniciat sessió li mostrará el nav de logueado amb el botó de logout
-        Si no mostrará el nav normal amb les botons d'alta i de login-->
-  <% if (locals.user) { %>
-    <%- include layouts/navigationLoggedIn.html %>
-  <% } else { %>
-    <%- include layouts/navigation.html %>
-  <% } %>
-
-  <!-- Es mostra els missatges des de el servidor a les vistes -->
-  <% if (locals.messages) {
-      if (messages.error) { %>
-      <div class="col-md-10 col-md-offset-1 alert alert-danger"><%= messages.error %></div>
-   <% } else if (messages.success) { %>
-      <div class="col-md-10 col-md-offset-1 alert alert-success"><%= messages.success %></div>
-   <% } else if (messages.info) { %>
-      <div class="col-md-10 col-md-offset-1 alert alert-info"><%= messages.info %></div>
-   <% }
-    } %>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="well well-sm">
-          <form class="form-horizontal" action="/events/insertAdmin" method="post">
-            <fieldset>
-              <legend class="text-center header">Crear nou esdeveniment</legend>
-              <div class="form-group">
-                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" id="codiEsdev" name="codiEsdev" placeholder="Codi" required /></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well well-sm">
+        <form class="form-horizontal" action="/events/insertAdmin" method="post">
+          <fieldset>
+            <legend class="text-center header">Crear nou esdeveniment</legend>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="codiEsdev" name="codiEsdev" placeholder="Codi" required /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="nomEsdev" name="nomEsdev" placeholder="Nom " required /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <select class="form-control" name="tipus" required>
+                  <option name="" value="0" selected>Esculli categoria</option>
+                  <option name="cinema" value="1">Cinema</option>
+                  <option name="teatre" value="2">Teatre i Dansa</option>
+                  <option name="gastronomia" value="3">Gastronomia</option>
+                  <option name="esports" value="4">Esports i Aventures</option>
+                  <option name="musicals" value="5">Musicals</option>
+                  <option name="infantils" value="6">Activitats Infantils</option>
+                  <option name="tecnologia" value="7">Ciència i Tecnologia</option>
+                  <option name="festivals" value="8">Fires i Festivals</option>
+                  <option name="musica" value="9">Música</option>
+                  <option name="altres" value="9">Altres</option>
+                </select>
               </div>
-              <div class="form-group">
-                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" id="nomEsdev" name="nomEsdev" placeholder="Nom " required /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="ubicacio" name="ubicacio" placeholder="Direcció" required /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="preuEntrada" name="preuEntrada" placeholder="Preu entrada (0 si és gratuït)" pattern="[0-9]{0,30}" required /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="entradesDisponibles" name="entradesDisponibles" placeholder="Entrades disponibles (Opcional si hi ha aforament màxim)" pattern="[0-9]{0,30}" /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="date" class="form-control" id="dataEsdev" name="dataEsdev" placeholder="Data de l'esdeveniment" /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="organitzador" name="organitzador" placeholder="Organitzador de l'esdeveniment" required /></div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-6">
+                <textarea name="descripcio" cols="75" rows="10" placeholder="Afegeix una descripció de l'esdeveniment" required></textarea></div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-success btn-lg" id="login">Insertar <span class="glyphicon glyphicon-ok"></button>
               </div>
-              <div class="form-group">
-                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                <div class="col-md-6">
-                  <select class="form-control" name="tipus" required>
-                    <option name="" value="0" selected>Esculli categoria</option>
-                    <option name="cinema" value="1">Cinema</option>
-                    <option name="teatre" value="2">Teatre i Dansa</option>
-                    <option name="gastronomia" value="3">Gastronomia</option>
-                    <option name="esports" value="4">Esports i Aventures</option>
-                    <option name="musicals" value="5">Musicals</option>
-                    <option name="infantils" value="6">Activitats Infantils</option>
-                    <option name="tecnologia" value="7">Ciència i Tecnologia</option>
-                    <option name="festivals" value="8">Fires i Festivals</option>
-                    <option name="musica" value="9">Música</option>
-                    <option name="altres" value="9">Altres</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" id="ubicacio" name="ubicacio" placeholder="Direcció" required /></div>
-              </div>
-              <div class="form-group">
-                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" id="preuEntrada" name="preuEntrada" placeholder="Preu entrada (0 si és gratuït)" pattern="[0-9]{0,30}" required /></div>
-              </div>
-              <div class="form-group">
-                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" id="entradesDisponibles" name="entradesDisponibles" placeholder="Entrades disponibles (Opcional si hi ha aforament màxim)" pattern="[0-9]{0,30}" /></div>
-              </div>
-              <div class="form-group">
-                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                <div class="col-md-6">
-                  <input type="date" class="form-control" id="dataEsdev" name="dataEsdev" placeholder="Data de l'esdeveniment" /></div>
-              </div>
-              <div class="form-group">
-                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" id="organitzador" name="organitzador" placeholder="Organitzador de l'esdeveniment" required /></div>
-              </div>
-              <div class="form-group">
-                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
-                <div class="col-md-6">
-                  <textarea name="descripcio" cols="75" rows="10" placeholder="Afegeix una descripció de l'esdeveniment" required></textarea></div>
-              </div>
-              <div class="form-group">
-                <div class="col-md-12 text-center">
-                  <button type="submit" class="btn btn-success btn-lg" id="login">Insertar <span class="glyphicon glyphicon-ok"></button>
-                </div>
-              </div>
-            </fieldset>
-            </form>
-        </div>
-        <div class="col-md-12 text-center">
-          <a href="/adminprofile"><button type="submit" class="btn btn-primary btn-lg">Tornar al perfil</button></a>
-        </div>
+            </div>
+          </fieldset>
+        </form>
       </div>
-
-
-
-</body>
-
-</html>
+      <div class="col-md-12 text-center">
+        <a href="/adminprofile"><button type="submit" class="btn btn-primary btn-lg">Tornar al perfil</button></a>
+      </div>
+    </div>
+  </div>
+</div>

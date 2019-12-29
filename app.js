@@ -16,6 +16,7 @@ var logger = function(req, resp, next) {
 //var client = redis.createClient();
 var cookieParser = require('cookie-parser');
 var partials = require('express-partials');
+//var expressLayouts = require('express-ejs-layouts');
 
 //client.on('error', (err) => {
 //  console.log('Redis error: ', err);
@@ -26,12 +27,16 @@ app.use(logger);
 app.use(flash());
 app.use(cookieParser());
 app.use(partials());
+//app.use(expressLayouts);
 
 app.use(session({
-  secret: "sosecret",
+  secret: "somerandonstuffs",
 	name: 'sessio_user',
-  resave: true,
-	saveUninitialized: true
+  resave: false,
+	saveUninitialized: true,
+	cookie: {
+        expires: 600000
+    }
 }));
 /*
 app.use(function (req, res, next) {
@@ -64,6 +69,18 @@ app.use('/public', express.static('./public'));
 //app.use('/public', express.static('./public'));
 //app.set('view engine', 'pug');
 //app.set('views', './views');
+
+
+app.use(function(req, res) {
+	res.status(404).render('errors/404', {title: '404: Page Not Found'});
+});
+
+app.use(function(req, res) {
+	res.status(500).render('errors/500');
+});
+
+
+
 
 app.listen(8500);
 console.log("Servidor iniciat al port 8500");

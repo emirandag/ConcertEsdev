@@ -5,7 +5,6 @@ var compras = require('../models/compresModel');
 var eventos = require('../models/esdevenimentsModel');
 
 
-
 router.get('/buyTicket/:id', function(request, response) {
   eventos.findById(request.params.id, function(error, comprar){
 
@@ -19,26 +18,9 @@ router.get('/buyTicket/:id', function(request, response) {
   });
 });
 
-router.post('/addCart/:id', function(request, response) {
-
-  //var idCart = request.body._id;
-  var idCart = request.params.id;
-  var entrada = request.body.cantidad;
-
-  console.log('.....'+idCart);
-  console.log(entrada+'.....');
-
-
-  /*
-  eventos.findById(request.params.id, function(error, agregar){
-    console.log('Evento en el carro: ----------> '+request.params.id);
-  });
-*/
-});
 
 
 router.post('/buyTicket', function(request, response) {
-console.log('************************'+ request.body.id);
     var datosEvento = {
       id: request.body.id,
       codiEsdev: request.body.codiEsdev,
@@ -112,8 +94,10 @@ var pago = {
 console.log(':(    '+error);
 
     } else {
-
-console.log(':D  '+compra);
+      request.flash("success", "¡Per poder veure els esdeveniments, tens que iniciar sessió!");
+      response.locals.messages = request.flash();
+      response.render('login');
+      console.log(':D  '+compra);
     }
   });
 });

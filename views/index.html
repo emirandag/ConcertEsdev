@@ -1,252 +1,205 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="/image/png" href="public/img/favicon.png"/>
-<title>ConcertEsdev</title>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="public/estilos.css">
-
-</head>
-<body>
-
-      <!-- S'inclos el header des de la carpeta layouts -->
-      <%- include layouts/header.html %>
-
-        <!-- S'inclos el nav des de la carpeta layouts
-              Si l'usuari ha iniciat sessió li mostrará el nav de logueado amb el botó de logout
-              Si no mostrará el nav normal amb les botons d'alta i de login-->
-        <% if (locals.user) { %>
-          <%- include layouts/navigationLoggedIn.html %>
-        <% } else { %>
-          <%- include layouts/navigation.html %>
-        <% } %>
-
-
-        <!-- Es mostra els missatges des de el servidor a les vistes -->
-        <% if (locals.messages) {
-            if (messages.error) { %>
-            <div class="col-md-10 col-md-offset-1 alert alert-danger"><%= messages.error %></div>
-         <% } else if (messages.success) { %>
-            <div class="col-md-10 col-md-offset-1 alert alert-success"><%= messages.success %></div>
-         <% } else if (messages.info) { %>
-            <div class="col-md-10 col-md-offset-1 alert alert-info"><%= messages.info %></div>
-         <% }
-          } %>
-
-
-
 <section id="seccio1" class="container-fluid">
-    <div class="row">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
+  <div class="row">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="public/img/tibidabo.jpg" alt="Concerts" width="360" height="245">
-        <div class="container">
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="public/img/tibidabo.jpg" alt="Concerts" width="360" height="245">
+          <div class="container">
             <div class="carousel-caption">
-                <h2>ConcertEsdev <strong></strong></h2>
-                 <p class="glyphicon glyphicon-thumbs-up"></p>
+              <h2>ConcertEsdev <strong></strong></h2>
+              <p class="glyphicon glyphicon-thumbs-up"></p>
 
             </div>
           </div>
-      </div>
+        </div>
 
-      <div class="item">
-        <img src="public/img/barna1.jpg" alt="teatre" width="360" height="245">
+        <div class="item">
+          <img src="public/img/barna1.jpg" alt="teatre" width="360" height="245">
           <div class="container">
             <div class="carousel-caption">
               <h2>ConcertEsdev<strong></strong></h2>
 
-                 <p class="glyphicon glyphicon-thumbs-up"></p>
+              <p class="glyphicon glyphicon-thumbs-up"></p>
 
             </div>
           </div>
-      </div>
+        </div>
 
-      <div class="item">
-        <img src="public/img/barna2.jpg" alt="ballet" width="360" height="245">
+        <div class="item">
+          <img src="public/img/barna2.jpg" alt="ballet" width="360" height="245">
           <div class="container">
             <div class="carousel-caption">
               <h2>ConcertEsdev<strong></strong></h2>
 
-                <p class="glyphicon glyphicon-thumbs-up"></p>
+              <p class="glyphicon glyphicon-thumbs-up"></p>
 
             </div>
           </div>
+        </div>
+
+        <div class="item">
+          <img src="public/img/barna3.jpg" alt="cinema" width="360" height="245">
+          <div class="container">
+            <div class="carousel-caption">
+              <h2>ConcertEsdev<strong></strong></h2>
+
+              <p class="glyphicon glyphicon-thumbs-up"></p>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="public/img/barna4.jpg" alt="cinema" width="360" height="245">
+          <div class="container">
+            <div class="carousel-caption">
+              <h2>ConcertEsdev<strong></strong></h2>
+
+              <p class="glyphicon glyphicon-thumbs-up"></p>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="public/img/barna5.jpg" alt="cinema" width="360" height="245">
+          <div class="container">
+            <div class="carousel-caption">
+              <h2>ConcertEsdev<strong></strong></h2>
+
+              <p class="glyphicon glyphicon-thumbs-up"></p>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="public/img/barna6.jpg" alt="cinema" width="360" height="245">
+          <div class="container">
+            <div class="carousel-caption">
+              <h2>ConcertEsdev<strong></strong></h2>
+
+              <p class="glyphicon glyphicon-thumbs-up"></p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Anterior</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Següent</span>
+        </a>
       </div>
-
-          <div class="item">
-            <img src="public/img/barna3.jpg" alt="cinema" width="360" height="245">
-              <div class="container">
-                  <div class="carousel-caption">
-                      <h2>ConcertEsdev<strong></strong></h2>
-
-                      <p class="glyphicon glyphicon-thumbs-up"></p>
-
-                  </div>
-            </div>
-        </div>
-
-      <div class="item">
-            <img src="public/img/barna4.jpg" alt="cinema" width="360" height="245">
-              <div class="container">
-                  <div class="carousel-caption">
-                      <h2>ConcertEsdev<strong></strong></h2>
-
-                      <p class="glyphicon glyphicon-thumbs-up"></p>
-
-                  </div>
-            </div>
-        </div>
-
-      <div class="item">
-            <img src="public/img/barna5.jpg" alt="cinema" width="360" height="245">
-              <div class="container">
-                  <div class="carousel-caption">
-                      <h2>ConcertEsdev<strong></strong></h2>
-
-                      <p class="glyphicon glyphicon-thumbs-up"></p>
-
-                  </div>
-            </div>
-        </div>
-
-      <div class="item">
-            <img src="public/img/barna6.jpg" alt="cinema" width="360" height="245">
-              <div class="container">
-                  <div class="carousel-caption">
-                      <h2>ConcertEsdev<strong></strong></h2>
-
-                      <p class="glyphicon glyphicon-thumbs-up"></p>
-
-                  </div>
-            </div>
-        </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Anterior</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Següent</span>
-    </a>
+    </div>
   </div>
-    </div>
-    </div>
 </section>
 
 <section id="seccio2" class="container">
-    <div class="row text-center">
+  <div class="row text-center">
     <h2>Activitats i plans per fer a Barcelona</h2>
     <hr class="small" />
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h2>Escull el teu!</h2>
     </div>
-     <div class="panel panel-default">
-      <div class="panel-body">
-          <h2>Escull el teu!</h2>
-        </div>
     <div class="row">
-      <div class= "col-xs-12 col-sm-6 col-md-4 ">
+      <div class="col-xs-12 col-sm-6 col-md-4 ">
         <h3>Cinema</h3>
         <figure></figure>
-         <img src="public/img/cinema.jpg" alt="Icona"  width="160" height="145"/>
+        <img src="public/img/cinema.jpg" alt="Icona" width="160" height="145" />
         <a href="/events/findTipus/Cinema" class="btn btn-primary">Més...</a>
-        </div>
+      </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Teatre i Dansa</h3>
         <figure></figure>
-          <img src="public/img/teatre2.jpg" alt="Icona" width="160" height="145"/>
+        <img src="public/img/teatre2.jpg" alt="Icona" width="160" height="145" />
         <a href="/events/findTipus/Teatre i Dansa" class="btn btn-primary">Més...</a>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Gastronomia</h3>
         <figure></figure>
-         <img src="public/img/Gastronomia.jpg" alt="Icona"  width="160" height="145"/>
+        <img src="public/img/Gastronomia.jpg" alt="Icona" width="160" height="145" />
         <a href="/events/findTipus/Gastronomia" class="btn btn-primary">Més...</a>
       </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Esports i Aventures</h3>
-            <figure></figure>
-            <img src="public/img/aventura2.jpg" alt="Icona"  width="160" height="145"/>
-            <a href="/events/findTipus/Esports i Aventures" class="btn btn-primary">Més</a>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <figure></figure>
+        <img src="public/img/aventura2.jpg" alt="Icona" width="160" height="145" />
+        <a href="/events/findTipus/Esports i Aventures" class="btn btn-primary">Més...</a>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Musicals</h3>
-            <figure></figure>
-            <img src="public/img/musical.jpg" alt="Icona"  width="160" height="145"/>
-            <a href="/events/findTipus/Musicals" class="btn btn-primary">Més</a>
-        </div>
-         <div class="col-xs-12 col-sm-6 col-md-4">
+        <figure></figure>
+        <img src="public/img/musical.jpg" alt="Icona" width="160" height="145" />
+        <a href="/events/findTipus/Musicals" class="btn btn-primary">Més...</a>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Activitats Infantils</h3>
-            <figure></figure>
-            <img src="public/img/niños.jpg" alt="Icona"  width="160" height="145"/>
-            <a href="/events/findTipus/Activitats Infantils" class="btn btn-primary">Més</a>
-        </div>
-         <div class="col-xs-12 col-sm-6 col-md-4">
+        <figure></figure>
+        <img src="public/img/niños.jpg" alt="Icona" width="160" height="145" />
+        <a href="/events/findTipus/Activitats Infantils" class="btn btn-primary">Més...</a>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Ciència i tecnologia</h3>
-            <figure></figure>
-            <img src="public/img/Ciència i tecnologia.jpg" alt="Icona"  width="160" height="145"/>
-            <a href="/events/findTipus/Ciència i tecnologia" class="btn btn-primary">Més</a>
-        </div>
-          <div class="col-xs-12 col-sm-6 col-md-4">
+        <figure></figure>
+        <img src="public/img/Ciència i tecnologia.jpg" alt="Icona" width="160" height="145" />
+        <a href="/events/findTipus/Ciència i tecnologia" class="btn btn-primary">Més...</a>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Fires i Festivals</h3>
-            <figure></figure>
-            <img src="public/img/Fires i Festivals.jpg" alt="Icona"  width="160" height="145"/>
-            <a href="/events/findTipus/Fires i Festivals" class="btn btn-primary">Més</a>
-        </div>
-          <div class="col-xs-12 col-sm-6 col-md-4">
+        <figure></figure>
+        <img src="public/img/Fires i Festivals.jpg" alt="Icona" width="160" height="145" />
+        <a href="/events/findTipus/Fires i Festivals" class="btn btn-primary">Més...</a>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
         <h3>Música</h3>
-            <figure></figure>
-            <img src="public/img/musica.jpg" alt="Icona"  width="160" height="145"/>
-            <a href="/events/findTipus/Música" class="btn btn-primary">Més</a>
-        </div>
+        <figure></figure>
+        <img src="public/img/musica.jpg" alt="Icona" width="160" height="145" />
+        <a href="/events/findTipus/Música" class="btn btn-primary">Més...</a>
+      </div>
     </div>
-    </div>
-     <div class="row text-center">
-        <hr class="small" />
+  </div>
+  <div class="row text-center">
+    <hr class="small" />
 </section>
+
 <section id="seccio2" class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <h3>Recomendacions</h3>
-        <figure></figure>
-        <p>Rànking de mitjors esdeveniments</p>
-        <a href="" class="btn btn-primary">Més...</a>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <h3>Promociona el teu esdeveniment</h3>
-        <figure></figure>
-        <p>Pot incloure a la nostra pàgina el teu esdeveniment. </p>
-        <a href="/suggested" class="btn btn-primary">Més...</a>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <h3>Tots els esdeveniments</h3>
-        <figure></figure>
-        <p>Coneix tots els esdeveniments disponibles</p>
-        <a href="/events/listUser" class="btn btn-primary">Més...</a>
-      </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h3>Recomendacions</h3>
+      <figure></figure>
+      <p>Rànking de mitjors esdeveniments</p>
+      <a href="/events/prueba" class="btn btn-primary">Més...</a>
     </div>
-    <div class="row text-center">
-        <hr class="small" />
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h3>Promociona el teu esdeveniment</h3>
+      <figure></figure>
+      <p>Pot incloure a la nostra pàgina el teu esdeveniment. </p>
+      <a href="/suggested" class="btn btn-primary">Més...</a>
     </div>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <h3>Tots els esdeveniments</h3>
+      <figure></figure>
+      <p>Coneix tots els esdeveniments disponibles</p>
+      <a href="/events/listUser" class="btn btn-primary">Més...</a>
+    </div>
+  </div>
+  <div class="row text-center">
+    <hr class="small" />
+  </div>
 </section>
-
-<!-- S'inclos el footer des de la carpeta layouts -->
-<%- include layouts/footer.html %>
-
-
-</body>
-</html>

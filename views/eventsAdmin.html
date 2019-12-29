@@ -1,76 +1,26 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="/image/png" href="public/img/favicon.png"/>
-<title>ConcertEsdev</title>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="public/estilos.css">
-
-</head>
-  <body>
-
-    <!-- S'inclos el header des de la carpeta layouts -->
-    <%- include layouts/header.html %>
-
-    <!-- S'inclos el nav des de la carpeta layouts
-          Si l'usuari ha iniciat sessió li mostrará el nav de logueado amb el botó de logout
-          Si no mostrará el nav normal amb les botons d'alta i de login-->
-    <% if (locals.user) { %>
-      <%- include layouts/navigationLoggedIn.html %>
-    <% } else { %>
-      <%- include layouts/navigation.html %>
-    <% } %>
-
-            <!-- Es mostra els missatges des de el servidor a les vistes -->
-            <% if (locals.messages) {
-                if (messages.error) { %>
-                <div class="col-md-10 col-md-offset-1 alert alert-danger"><%= messages.error %></div>
-             <% } else if (messages.success) { %>
-                <div class="col-md-10 col-md-offset-1 alert alert-success"><%= messages.success %></div>
-             <% } else if (messages.info) { %>
-                <div class="col-md-10 col-md-offset-1 alert alert-info"><%= messages.info %></div>
-             <% }
-              } %>
-
-  <section id="seccio2" class="container">
-
-    <div class="panel panel-default">
-
-      <div class="panel-body">
-        <h2>Eventos propuestos por los usuarios</h2>
-      </div>
-      <% if (listado.length > 0) { %>
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <table>
-            <tr>
-              <th>Evento</th>
-            </tr>
-            <% listado.forEach(function(item){
-                console.log(item);
-                var str = item.replace(".json", " "); %>
-            <tr>
-              <td><%= str %></td>
-            </tr>
-            <% }); %>
-          </table>
-        </div>
-      </div>
-      <% } else { %>
-      <p>¡No hay eventos propuestos!</p>
-      <%  } %>
-
+<section id="seccio2" class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h2>Eventos propuestos por los usuarios</h2>
     </div>
-
-
-    <!-- S'inclos el footer des de la carpeta layouts -->
-    <%- include layouts/footer.html %>
-
-
-
-  </body>
-</html>
+    <% if (listado.length > 0) { %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <table>
+          <tr>
+            <th>Evento</th>
+          </tr>
+          <% listado.forEach(function(item){
+              var str = item.replace(".json", " "); %>
+          <tr>
+            <td><%= str %></td>
+          </tr>
+          <% }); %>
+        </table>
+      </div>
+    </div>
+    <% } else { %>
+    <p>¡No hay eventos propuestos!</p>
+    <%  } %>
+  </div>
+</section>

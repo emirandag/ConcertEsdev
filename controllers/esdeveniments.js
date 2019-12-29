@@ -26,16 +26,10 @@ router.get('/listUser', function(request, response){
 
 		} else {
 
-			if (request.session.user) {
-				request.flash("info", "Aquests son els esdeveniments disponibles");
-				response.locals.messages = request.flash();
-				response.render('eventsUser', {events: eventos});
-				console.log("Aquests son els esdeveniments disponibles => " + eventos);
-		 } else {
-		   request.flash("error", "¡Per poder promocionar esdeveniments, tens que iniciar sessió!");
-		   response.locals.messages = request.flash();
-		   response.render('login');
-		 }
+			request.flash("info", "¡Aquests son els esdeveniments disponibles!");
+			response.locals.messages = request.flash();
+			response.render('eventsUser', {events: eventos});
+			console.log("Aquests son els esdeveniments disponibles => " + eventos);
 
 		}
 	});
@@ -411,25 +405,83 @@ router.get('/insertAdmin', function(request, response) {
 });
 
 
+
 router.get('/findTipus/:tipus', function(request, response) {
 	var tipo = request.params.tipus;
 	//console.log(tipo);
 	eventos.find({tipus:request.params.tipus},function(error, tipos){
 
 		if (error) {
-			response.send(error);
+
+			request.flash("error", "¡Ha hagut un error al carregar la página!");
+			response.locals.messages = request.flash();
+			response.render('/');
+
 		} else {
-			 if (request.session.user) {
-				response.render('eventType', {tipos:tipos});
-			} else {
-				request.flash("error", "¡Per poder veure els esdeveniments, tens que iniciar sessió!");
-				response.locals.messages = request.flash();
-				response.render('login');
-			}
+
+			request.flash("info", "¡Aquest son els esdeveniments de la categoria escollida!");
+			response.locals.messages = request.flash();
+			response.render('eventType', {tipos:tipos});
 
 		}
 	});
 });
 
+
+router.post('/assist/:id', function(request,response){
+  eventos.findById(request.params.id, function(error, asistir){
+
+		if (request.session.user) {
+		var user = request.session.user;
+		var eventos = asistir;
+
+		eventos.assistents.push({
+			usuari: user.nom+" "+user.cognom,
+			email: user.email
+		});
+
+		eventos.save(function(error, asistente) {
+			if (error) {
+				console.log('No funcionaaaaaaaaaaaaaaaaaaaaaa');
+			} else {
+
+					request.flash("success", "¡Te has registrat al esdeveniment "+eventos.nomEsdev+"!");
+					response.locals.messages = request.flash();
+					response.render('userprofile');
+					console.log(asistente+'------>');
+
+			}
+		});
+	} else {
+
+			request.flash("error", "¡Tens que iniciar sessió per registrar-te a qualsevol esdeveniment!");
+			response.locals.messages = request.flash();
+			response.render('login');
+
+		}
+   });
+});
+
+router.get('/listAssistants/:id', function(request, response) {
+
+	eventos.findById(request.params.id,function(error, eventos){
+
+		if (error) {
+
+			request.flash("error", "¡Error al listar els assistents!");
+			response.locals.messages = request.flash();
+			response.render('adminprofile');
+			console.log(error);
+
+		}else{
+
+			request.flash("info", "¡Aquests son els usuaris registrats a aquest esdeveniment!");
+			response.locals.messages = request.flash();
+			response.render('assistants', {listado: eventos});
+			console.log(eventos);
+
+		}
+	});
+});
 
 module.exports = router;

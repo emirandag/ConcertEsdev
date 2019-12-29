@@ -8,27 +8,36 @@ var bcrypt = require('bcrypt');
 /*
 * Creació del Schema/Objecte dels esdeveniment
 */
+var AsistentesSchema = mongoose.Schema({
+  usuari: {
+    type: String
+  },
+  email: {
+    type: String
+  }
+});
+
 var EventoSchema = mongoose.Schema({
   codiEsdev: {
        type: String,
        unique:true,
-       required: true
+       required: false
        },
   nomEsdev: {
        type: String,
-       required: true
+       required: false
        },
   tipus: {
        type: String,
-       required: true
+       required: false
      },
   ubicacio: {
        type: String,
-       required: true
+       required: false
              },
   preuEntrada: {
        type: Number,
-       required: true
+       required: false
              },
   entradesDisponibles: {
        type: Number,
@@ -36,16 +45,17 @@ var EventoSchema = mongoose.Schema({
            },
   descripcio: {
        type: String,
-       required: true
+       required: false
            },
   dataEsdev: {
        type: String,
-       required: true
+       required: false
             },
   organitzador: {
         type: String,
-        required: true
-            }
+        required: false
+      },
+  assistents: [AsistentesSchema]
 });
 
 module.exports = mongoose.model('esdeveniment', EventoSchema);
