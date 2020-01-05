@@ -106,3 +106,35 @@
   left: 100%;
   margin-top: -1px;
 }
+
+@media screen {
+  #printSection {
+      display: none;
+  }
+}
+
+@media print {
+  body * {
+    visibility:hidden;
+  }
+  #printSection, #printSection * {
+    visibility:visible;
+  }
+  #printSection {
+    position:absolute;
+    left:0;
+    top:0;
+  }
+}
+
+.factura {
+  border-collapse: collapse;
+  width: 100%;
+    padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+#preuTotal {
+  font-size: 25px;
+}

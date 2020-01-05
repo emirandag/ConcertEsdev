@@ -28,14 +28,14 @@ app.use(flash());
 app.use(cookieParser());
 app.use(partials());
 //app.use(expressLayouts);
-
+var expiryDate = new Date(Date.now() + (24 * 60 * 60 * 1000));
 app.use(session({
   secret: "somerandonstuffs",
 	name: 'sessio_user',
-  resave: false,
+  resave: true,
 	saveUninitialized: true,
 	cookie: {
-        expires: 600000
+        expires: expiryDate
     }
 }));
 /*

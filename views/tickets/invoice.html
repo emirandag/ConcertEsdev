@@ -1,0 +1,88 @@
+<div class="container">
+  <h2>Veure el tiquet de compra</h2>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Detalls</button>
+  <!-- Modal -->
+   <div id="printThis">
+  <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <img class="uno" src="../../public/img/logonou2.png" alt="imagen" width="160" heigth="160">
+          <div class="">
+
+          </div>
+          <div class="col-md-5">
+            <h4 class="modal-title" id="gridSystemModalLabel">ConcertEsdev</h4>
+          </div>
+          <div class="col-md-7">
+            <p><strong>ID compra: </strong><%= compra._id %></p>
+          </div>
+
+        </div>
+        <div class="col-md-12">
+            <div class="modal-body">
+              <table class="factura">
+                <tr>
+                </tr>
+                <tr>
+                  <td><p><strong>Codi esdeveniment:</strong></p></td>
+                  <td><p><%= pagado.codiEsdev %></p></td>
+                </tr>
+                <tr>
+                  <td><p><strong>Esdeveniment:</strong></p></td>
+                  <td><p><%= pagado.nomEsdev %></p></td>
+                </tr>
+                <tr>
+                  <td><p><strong>Categoria:</strong></p></td>
+                  <td><p><%= pagado.tipus %></p></td>
+                </tr>
+                <tr>
+                  <td><p><strong>Data esdeveniment:</strong></p></td>
+                  <td><p><%= pagado.dataEsdev %></p></td>
+                </tr>
+                <tr>
+                  <td><p><strong>Organitzador:</strong></p></td>
+                  <td><p><%= pagado.organitzador %></p></td>
+                </tr>
+              </table>
+          </div>
+          <div class="modal-body">
+              <table class="factura">
+                <tr>
+                  <th><p><strong>Quantitat</strong></p></th>
+                  <th><p><strong>Preu entrada</strong></p></th>
+                  <th><p><strong>Data compra</strong></p></th>
+                </tr>
+                <tr>
+                  <td><p><%= compra.numEntrada %></p></td>
+                  <td><p><%= compra.preuEntrada %> €</p></td>
+                  <td><p>
+                    <%= compra.dataCompra %></p></td>
+                </tr>
+              </table>
+              </div>
+            <div class="modal-body">
+              <table id="preuTotal" class="factura">
+                <tr>
+                </tr>
+                <tr>
+                  <td><p><strong>Total</strong></p></td>
+                  <td><p><%= compra.preuTotal %> €</p></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Tancar</button>
+          <button type="button" id="btnPrint" class="btn btn-success"><span class="glyphicon glyphicon-print"></span> Imprimir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

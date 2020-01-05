@@ -1,8 +1,16 @@
 <div class="col-md-10 col-md-offset-1">
+    <div class="">
     <h2>¡Bienvenido a tu perfil!
       <% if (locals.user) { %>
         <%= locals.user.email %>
       <% } else { %>
         <%= user.email %>
       <% } %> </h2>
-</div><br><br><br><br>
+      </div><br><br>
+      <div class="col-md-5">
+        <p>Veure les mevas compres</p>
+      </div>
+      <div class="col-md-5">
+        <a href="/tickets/myShopping/<%= locals.user._id %>" class="btn btn-primary">Compres</a>
+      </div>
+</div><br><br><br><br><br><br><br><br>

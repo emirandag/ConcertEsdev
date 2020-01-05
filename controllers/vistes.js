@@ -12,34 +12,33 @@ router.get("/", function(req, resp) {
 });
 
 router.get('/register',function(req,resp){
-  resp.render('register', {});
+  resp.render('users/register', {});
 	console.log('send to signup');
 });
 
 
 router.get('/login',function(req,resp){
-  resp.render('login', {});
-  //resp.sendFile(__dirname+ "/views/login.html");
+  resp.render('users/login', {});
 	console.log('send to login');
 });
 
 router.get('/userprofile',function(req,resp){
-  if (req.session.user == "admin@concertesdev.com") {
+  if (req.session.user.email === "admin@concertesdev.com") {
     resp.redirect('adminprofile');
   } else if (req.session.user) {
     resp.render('users/userprofile');
   } else {
-    resp.render('login');
+    resp.render('users/login');
   }
 });
 
 router.get('/adminprofile',function(req,resp){
-  if (req.session.user.email == "admin@concertesdev.com") {
+  if (req.session.user.email === "admin@concertesdev.com") {
     resp.render('users/adminprofile');
   } else if (req.session.user) {
     resp.redirect('userprofile');
   } else {
-    resp.render('login');
+    resp.render('users/login');
   }
 });
 
@@ -48,12 +47,12 @@ router.get('/adminprofile',function(req,resp){
 **/
 router.get('/suggested',function(req, resp){
   if (req.session.user) {
-    resp.render('addSuggested', {});
+    resp.render('events/addSuggested', {});
   	console.log('send to events suggested');
  } else {
    req.flash("error", "¡Per poder promocionar esdeveniments, tens que iniciar sessió!");
    resp.locals.messages = req.flash();
-   resp.render('login');
+   resp.render('users/login');
  }
 
 });
@@ -62,7 +61,7 @@ router.get('/suggested',function(req, resp){
 * Manejador GET que renderizació a la vista "insert.html"
 **/
 router.get('/insert',function(req, resp){
-	resp.render('insert', {});
+	resp.render('events/insert', {});
 	console.log('send to insert new event');
 });
 
@@ -77,10 +76,6 @@ router.get('/formulariContacte',function(req, resp){
 
 router.get('/confirmMail', function(req, resp) {
   resp.render('confirmMail', {});
-});
-
-router.get('/prueba', function(req, resp) {
-  resp.render('prueba', {});
 });
 
 

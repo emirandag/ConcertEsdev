@@ -1,53 +1,108 @@
-<section id="header" class="container-fluid">
- <div class="row">
-   <nav class="navbar navbar-default">
-     <div class="container-fluid">
-       <div class="navbar-header">
-         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-           <span class="sr-only">Menú</span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-         </button>
-         <a class="navbar-brand" href="#"></a>
-       </div>
-       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-         <ul class="nav navbar-nav">
-           <li class="active"><a href="/">Inici</a></li>
-           <li class="dropdown">
-             <a href="/events/eventsUser" class="dropdown-toggle" data-toggle="dropdown">Esdeveniments <span class="caret"></span></a>
-             <ul class="dropdown-menu dropright">
-               <li class="dropdown-submenu">
-                 <a class="test" tabindex="-1" href="#">Categories <span class="glyphicon glyphicon-menu-right"></span></a>
+<% if (locals.user.email == "admin@concertesdev.com") { %>
+  <section id="header" class="container-fluid">
+   <div class="row">
+     <nav class="navbar navbar-default">
+       <div class="container-fluid">
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+             <span class="sr-only">Menú</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href="#"></a>
+         </div>
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <ul class="nav navbar-nav">
+             <li class="active"><a href="/">Inici</a></li>
+             <li class="dropdown">
+               <a href="/events/eventsUser" class="dropdown-toggle" data-toggle="dropdown">Esdeveniments <span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                 <li><a href="/events/eventsSuggested">Proposats</a></li>
+                 <li><a href="/events/listAll">Listar esdeveniments</a></li>
+                 <li><a href="/insert">Crear esdeveniment</a></li>
+               </ul>
+             </li>
+             <li class="dropdown">
+               <a href="/events/eventsUser" class="dropdown-toggle" data-toggle="dropdown">Usuaris <span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                 <li><a href="/users/listUsers">Listar usuaris</a></li>
+               </ul>
+             </li>
+           </ul>
+           <ul class="nav navbar-nav navbar-center">
+           </ul>
+           <div class="nav navbar-nav navbar-right">
+             <ul class="nav navbar-nav">
+               <li class="dropdown">
+                 <a href="/adminprofile" class="dropdown-toggle" data-toggle="dropdown"><%= locals.user.email %><span class="caret"></span></a>
                  <ul class="dropdown-menu">
-                   <li><a href="/events/findTipus/Cinema">Cinema</a></li>
-                   <li><a href="/events/findTipus/Teatre i Dansa">Teatre i Dansa</a></li>
-                   <li><a href="/events/findTipus/Gastronomia">Gastronomia</a></li>
-                   <li><a href="/events/findTipus/Esports i Aventures">Esports i Aventures</a></li>
-                   <li><a href="/events/findTipus/Musicals">Musicals</a></li>
-                   <li><a href="/events/findTipus/Activitats Infantils">Activitats Infantils</a></li>
-                   <li><a href="/events/findTipus/Ciència i tecnologia">Ciència i tecnologia</a></li>
-                   <li><a href="/events/findTipus/Fires i Festivals">Fires i Festivals</a></li>
-                   <li><a href="/events/findTipus/Música">Música</a></li>
-                 </ul>
+                   <li><a href="/userprofile">El teu perfil</a></li>
+                   <li><a href="/users/logout">Tancar Sessió</a></li>
+                  </ul>
                </li>
-
-               <li><a href="#">Les tevas propostes</a></li>
-               <li class="divider"></li>
-               <li><a href="#">Altres</a></li>
              </ul>
-           </li>
-           <li><a href="/formulariContacte"><span class="glyphicon glyphicon-envelope "></span> Contacte amb nosaltres</a></li>
-           <li><a href="/users/logout"><span class="glyphicon glyphicon-log-out"></span> Tancar Sessió</a></li>
-
-         </ul>
-         <ul class="nav navbar-nav navbar-center">
-         </ul>
-         <div class="nav navbar-nav navbar-right"><br>
-               <p style="color:white;"><%= locals.user.email %></p>
+           </div>
          </div>
        </div>
-     </div>
-   </nav>
- </div>
-</section>
+     </nav>
+   </div>
+  </section>
+<% } else { %>
+  <section id="header" class="container-fluid">
+   <div class="row">
+     <nav class="navbar navbar-default">
+       <div class="container-fluid">
+         <div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+             <span class="sr-only">Menú</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href="#"></a>
+         </div>
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <ul class="nav navbar-nav">
+             <li class="active"><a href="/">Inici</a></li>
+             <li class="dropdown">
+               <a href="/events/eventsUser" class="dropdown-toggle" data-toggle="dropdown">Esdeveniments <span class="caret"></span></a>
+               <ul class="dropdown-menu dropright">
+                 <li class="dropdown-submenu">
+                   <a class="test" tabindex="-1" href="#">Categories <span class="glyphicon glyphicon-menu-right"></span></a>
+                   <ul class="dropdown-menu">
+                     <li><a href="/events/findTipus/Cinema">Cinema</a></li>
+                     <li><a href="/events/findTipus/Teatre i Dansa">Teatre i Dansa</a></li>
+                     <li><a href="/events/findTipus/Gastronomia">Gastronomia</a></li>
+                     <li><a href="/events/findTipus/Esports i Aventures">Esports i Aventures</a></li>
+                     <li><a href="/events/findTipus/Musicals">Musicals</a></li>
+                     <li><a href="/events/findTipus/Activitats Infantils">Activitats Infantils</a></li>
+                     <li><a href="/events/findTipus/Ciència i tecnologia">Ciència i tecnologia</a></li>
+                     <li><a href="/events/findTipus/Fires i Festivals">Fires i Festivals</a></li>
+                     <li><a href="/events/findTipus/Música">Música</a></li>
+                   </ul>
+                 </li>
+
+                 <li><a href="/tickets/myShopping/<%= locals.user._id %>">Les meves compres</a></li>
+                 <li class="divider"></li>
+                 <li><a href="/events/findTipus/Altres">Altres</a></li>
+               </ul>
+             </li>
+             <li><a href="/formulariContacte"><span class="glyphicon glyphicon-envelope "></span> Contacte amb nosaltres</a></li>
+             <li><a href="/users/logout"><span class="glyphicon glyphicon-log-out"></span> Tancar Sessió</a></li>
+
+           </ul>
+           <ul class="nav navbar-nav navbar-center">
+           </ul>
+           <div class="nav navbar-nav navbar-right">
+             <ul class="nav navbar-nav">
+               <li class="active"><a href="/userprofile"><%= locals.user.email %></a></li>
+            </ul>
+           </div>
+         </div>
+       </div>
+     </nav>
+   </div>
+  </section>
+
+<% } %>

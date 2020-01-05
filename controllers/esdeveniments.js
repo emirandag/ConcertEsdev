@@ -28,7 +28,7 @@ router.get('/listUser', function(request, response){
 
 			request.flash("info", "¡Aquests son els esdeveniments disponibles!");
 			response.locals.messages = request.flash();
-			response.render('eventsUser', {events: eventos});
+			response.render('events/eventsUser', {events: eventos});
 			console.log("Aquests son els esdeveniments disponibles => " + eventos);
 
 		}
@@ -48,14 +48,14 @@ router.get('/listUser/:id', function(request, response){
 
 			request.flash("error", "Error en intentar veure l'esdeveniment");
 			response.locals.messages = request.flash();
-			response.render('eventsUser', {events: eventos});
+			response.render('events/eventsUser', {events: eventos});
 			console.log("Error en intentar veure l'esdeveniment\n");
 
     } else {
 
 			request.flash("info", "Pots veure els detalls del esdeveniment");
 			response.locals.messages = request.flash();
-			response.render('detailsEvent', {event: detalls});
+			response.render('events/detailsEvent', {event: detalls});
 			console.log("S'ha vist l'esdeveniment amb ID => " + request.params.id + "\n");
 
     }
@@ -90,7 +90,7 @@ router.post('/addSuggested', function(request, response) {
 
 				request.flash("error", "¡Ja existeix un esdeveniment amb aquest nom!");
 				response.locals.messages = request.flash();
-				response.render('addSuggested');
+				response.render('events/addSuggested');
 				console.log('Ja existeix un esdeveniment amb aquest nom');
 
 		} else {
@@ -120,7 +120,7 @@ router.post('/addSuggested', function(request, response) {
 * Llegirà tots els esdeveniments de directori "events" i recollirà tots els esdeveniments proposats.
 * A la vista "eventsSuggested" es mostrarà només el nom de l'esdeveniment
 **/
-router.get('/listSuggested', function(request, response) {
+router.get('/eventsSuggested', function(request, response) {
 
 	var testFolder = 'events/';
 
@@ -128,13 +128,16 @@ router.get('/listSuggested', function(request, response) {
 
 		if (err) {
 
+			request.flash("error", "¡Error al carregar els esdeveniments proposats!");
+			response.locals.messages = request.flash();
+			response.render('users/adminprofile');
 			console.log(err);
 
 		} else {
 
 			request.flash("info", "¡Aquest son els esdeveniments proposats pels usuaris!");
 			response.locals.messages = request.flash();
-			response.render('eventsSuggested', {listado: files});
+			response.render('events/eventsSuggested', {listado: files});
 
 		}
 	});
@@ -152,22 +155,25 @@ router.post('/suggested', function(request, response) {
 
 	fs.readFile('events/'+escogido+'.json', 'utf8', (err, jsonString) => {
 		if (err) {
-				console.log("File read failed:", err);
-				return;
+			request.flash("error", "¡Aquest nom no existeix!");
+			//response.locals.messages = request.flash();
+			response.redirect('eventsSuggested');
+			console.log("La lectura del fitxer ha fallat:", err);
+			return;
 		} else {
 				var evento = JSON.parse(jsonString);
 				request.flash("info", "¡Heu de decidir si s'acepta o s'elimina la proposta d'esdeveniment!");
 				response.locals.messages = request.flash();
-				response.render('suggested', {evento: evento});
+				response.render('events/suggested', {evento: evento});
 		}
 	});
 });
 
 /**
-* Manejador i funció GET que redireccionará a la funció "listSuggested" en cas intentar accedir per URL
+* Manejador i funció GET que redireccionará a la funció "eventsSuggested" en cas intentar accedir per URL
 **/
 router.get('/suggested', function(request, response) {
-	response.redirect('listSuggested');
+	response.redirect('eventsSuggested');
 });
 
 
@@ -202,7 +208,7 @@ router.post('/insertSuggested', function(request, response) {
 
 				request.flash("error", "¡Ha hagut un problema al desar l'esdeveniment!");
 				response.locals.messages = request.flash();
-				response.render('adminprofile');
+				response.render('users/adminprofile');
 
 			} else {
 
@@ -212,7 +218,7 @@ router.post('/insertSuggested', function(request, response) {
 
 						request.flash("success", "¡S'ha afegit l'esdeveniment a la base de dades!");
 						response.locals.messages = request.flash();
-						response.render('adminprofile');
+						response.render('users/adminprofile');
   					console.log('Fichero eliminado');
 
 					});
@@ -236,7 +242,7 @@ router.post('/deleteSuggested', function(request, response) {
 
 	 	request.flash("success", "¡S'ha eliminat l'esdeveniment suggerit!");
 		response.locals.messages = request.flash();
-		response.render('adminprofile');
+		response.render('users/adminprofile');
   	console.log('Fichero eliminado');
 
 	});
@@ -254,14 +260,14 @@ router.get('/listAll', function(request, response) {
 
 			request.flash("error", "¡Error al listar els esdeveniments!");
 			response.locals.messages = request.flash();
-			response.render('adminprofile');
+			response.render('users/adminprofile');
 			console.log(error);
 
 		}else{
 
 			request.flash("info", "¡S'ha listat els esdeveniments!");
 			response.locals.messages = request.flash();
-			response.render('list', {listado: eventos});
+			response.render('events/list', {listado: eventos});
 			console.log(eventos);
 
 		}
@@ -279,14 +285,14 @@ router.get('/update/:id', function(request, response) {
 
 			request.flash("error", "¡Error al editar l'esdeveniment!");
 			response.locals.messages = request.flash();
-			response.render('list');
+			response.render('events/list');
 			console.log(error);
 
 		} else {
 
 			request.flash("info", "¡Pots editar l'esdeveniment!");
 			response.locals.messages = request.flash();
-			response.render('edit', {editado: documento});
+			response.render('events/edit', {editado: documento});
 
 		}
 	});
@@ -384,13 +390,13 @@ router.post('/insertAdmin', function(request, response) {
 
 				request.flash("error", "¡Ha hagut un problema al desar l'esdeveniment, aquest codi ja existeix!");
 				response.locals.messages = request.flash();
-				response.render('adminprofile');
+				response.render('users/adminprofile');
 
 			} else {
 
 				request.flash("success", "¡S'ha afegit l'esdeveniment a la base de dades!");
 				response.locals.messages = request.flash();
-				response.render('adminprofile');
+				response.render('users/adminprofile');
 
 			}
 		});
@@ -398,10 +404,10 @@ router.post('/insertAdmin', function(request, response) {
 });
 
 /**
-* Manejador i funció GET que renderizar a la vista "listSuggested" en cas intentar accedir per URL
+* Manejador i funció GET que renderizar a la vista "eventsSuggested" en cas intentar accedir per URL
 **/
 router.get('/insertAdmin', function(request, response) {
-	response.render('adminprofile');
+	response.render('users/adminprofile');
 });
 
 
@@ -421,7 +427,7 @@ router.get('/findTipus/:tipus', function(request, response) {
 
 			request.flash("info", "¡Aquest son els esdeveniments de la categoria escollida!");
 			response.locals.messages = request.flash();
-			response.render('eventType', {tipos:tipos});
+			response.render('events/eventType', {tipos:tipos});
 
 		}
 	});
@@ -447,7 +453,7 @@ router.post('/assist/:id', function(request,response){
 
 					request.flash("success", "¡Te has registrat al esdeveniment "+eventos.nomEsdev+"!");
 					response.locals.messages = request.flash();
-					response.render('userprofile');
+					response.render('users/userprofile');
 					console.log(asistente+'------>');
 
 			}
@@ -456,7 +462,7 @@ router.post('/assist/:id', function(request,response){
 
 			request.flash("error", "¡Tens que iniciar sessió per registrar-te a qualsevol esdeveniment!");
 			response.locals.messages = request.flash();
-			response.render('login');
+			response.render('users/login');
 
 		}
    });
@@ -470,14 +476,14 @@ router.get('/listAssistants/:id', function(request, response) {
 
 			request.flash("error", "¡Error al listar els assistents!");
 			response.locals.messages = request.flash();
-			response.render('adminprofile');
+			response.render('users/adminprofile');
 			console.log(error);
 
 		}else{
 
 			request.flash("info", "¡Aquests son els usuaris registrats a aquest esdeveniment!");
 			response.locals.messages = request.flash();
-			response.render('assistants', {listado: eventos});
+			response.render('events/assistants', {listado: eventos});
 			console.log(eventos);
 
 		}

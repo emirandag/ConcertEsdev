@@ -27,8 +27,14 @@ var CompraSchema = mongoose.Schema({
     required: true
   },
   dataCompra: {
-    type: Date,
-    default: Date.now
+    type: String,
+    required: true
+  },
+  idUsuari: {
+    type: String
+  },
+  idEsdeveniment: {
+    type: String
   }
 });
 

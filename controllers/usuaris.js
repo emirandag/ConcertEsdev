@@ -10,7 +10,7 @@ var users = require('../models/usuarisModel');
 */
 
 router.get('/register', function(request, response){
-  response.render('login');
+  response.render('users/login');
 });
 
 router.post('/register', function(request, response) {
@@ -29,18 +29,18 @@ router.post('/register', function(request, response) {
       if (error) {
         request.flash("error", '¡Aquest email ja existeix!  => ' + request.body.email);
         response.locals.messages = request.flash();
-        response.render('register');
+        response.render('users/register');
 				console.log('¡Aquest email ja existeix! => ' +request.body.email);
       } else {
         request.flash("success", '¡Te has registrat correctament! => ' + request.body.email);
         response.locals.messages = request.flash();
-        response.render('login');
+        response.render('users/login');
       }
     });
   } else {
     request.flash("error", "!El valor proporcionat de les contrasenyes no coincideix!");
     response.locals.messages = request.flash();
-    response.render('register');
+    response.render('users/register');
   }
   }
   users.find({}, function(err, data) {
@@ -61,7 +61,7 @@ router.get('/login', function(request, response){
   } else if (request.session.user) {
     response.redirect('../userprofile');
   } else {
-    response.render('login');
+    response.render('users/login');
   }
 
 });
@@ -78,13 +78,13 @@ router.post('/login', function(request, response, next){
 
             request.flash("error", '¡Aquest usuari no existeix!');
             response.locals.messages = request.flash();
-            response.render('login');
+            response.render('users/login');
 
           } else if (user == null) {
 
            request.flash("error", '¡Contrasenya incorrecta!');
            response.locals.messages = request.flash();
-           response.render('login');
+           response.render('users/login');
 
           } else {
 
@@ -94,12 +94,6 @@ router.post('/login', function(request, response, next){
       } else {
 
 				if (request.body.email == 'admin@concertesdev.com') {
-
-          //request.session.loggedIn = true;
-
-          //request.session.admin = request.body.email;
-          //response.locals.user = request.session.admin;
-
 
           request.flash("success", '¡Has iniciat sessió correctament!');
           response.locals.messages = request.flash();
@@ -160,7 +154,7 @@ router.get('/listUsers', function(request, response) {
     } else {
       request.flash("info", '¡Aquest son els usuaris registrats a la web!');
       response.locals.messages = request.flash();
-      response.render('users', {users: users});
+      response.render('users/users', {users: users});
     }
   });
 });

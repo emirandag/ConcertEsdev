@@ -12,6 +12,7 @@
         <div class="col-xs-12">
           <table id="tabla">
             <tr>
+              <th>ID</th>
               <th>Nom</th>
               <th>Cognom</th>
               <th>Correu electrònic</th>
@@ -19,6 +20,7 @@
             </tr>
             <% users.forEach(function(item){ %>
             <tr>
+              <td><%= item._id %></td>
               <td><%= item.nom %></td>
               <td><%= item.cognom %></td>
               <td><%= item.email %></td>
@@ -33,6 +35,6 @@
     <p>¡No hi ha usuaris registrats!</p>
     <% }%>
     <div class="btn btn-primary">
-      <a href="/adminprofile">Tornar al perfil <span class="glyphicon glyphicon-arrow-left"></a>
+      <a href="/adminprofile"><span class="glyphicon glyphicon-arrow-left"></span> Tornar al perfil</a>
     </div>
   </section>
