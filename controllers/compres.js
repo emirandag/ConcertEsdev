@@ -5,6 +5,8 @@ var compras = require('../models/compresModel');
 var eventos = require('../models/esdevenimentsModel');
 
 
+
+
 router.get('/buyTicket/:id', function(request, response) {
   eventos.findById(request.params.id, function(error, comprar){
 
