@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var url = 'mongodb+srv://concertesdev:<password>@cluster0-rbbl0.mongodb.net/test?retryWrites=true&w=majority';
+var url = 'mongodb+srv://concertesdev:concertesdev@cluster0-rbbl0.mongodb.net/test?retryWrites=true&w=majority';
 
 var db = mongoose.connect(url,{
   useNewUrlParser: true,
