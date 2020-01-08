@@ -83,7 +83,7 @@ app.use(function(req, res) {
 app.set('port', process.env.PORT || 8500);
 
 app.listen(app.get('port'), () => {
-	console.log("Servidor iniciat al port 8500");
+	console.log("Servidor web iniciat");
 });
 
 module.exports = app;
