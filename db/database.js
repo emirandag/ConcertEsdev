@@ -1,3 +1,4 @@
+/*
 var mongoose = require('mongoose');
 var url = 'mongodb+srv://concertesdev:concertesdev@cluster0-rbbl0.mongodb.net/test?retryWrites=true&w=majority';
 
@@ -12,3 +13,13 @@ var db = mongoose.connect(url,{
 });
 
 module.exports = db;
+*/
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://concertesdev:concertesdev@cluster0-rbbl0.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("concertesdev");
+  // perform actions on the collection object
+  client.close();
+});
