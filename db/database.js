@@ -20,6 +20,8 @@ const uri = "mongodb+srv://concertesdev:concertesdev@cluster0-rbbl0.mongodb.net/
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   const collection = client.db("concertesdev");
+
+  console.log("Connectat...");
   // perform actions on the collection object
-  client.close();
+  //client.close();
 });
