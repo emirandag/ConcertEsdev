@@ -1,6 +1,6 @@
 /*
 var mongoose = require('mongoose');
-var url = 'mongodb+srv://concertesdev:concertesdev@cluster0-rbbl0.mongodb.net/test?retryWrites=true&w=majority';
+var url = 'mongodb://localhost:27017/concertesdev';
 
 var db = mongoose.connect(url,{
   useNewUrlParser: true,
@@ -11,17 +11,14 @@ var db = mongoose.connect(url,{
 }).catch((error) =>{
   console.log('Error al intentar connectar a la base de dades' + error);
 });
-
-module.exports = db;
 */
 
+
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://concertesdev:concertesdev@cluster0-rbbl0.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://adminConcertEsdev:concertesdev@cluster0-rbbl0.mongodb.net/concertesdev?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
-  const collection = client.db("concertesdev");
-
-  console.log("Connectat...");
-  // perform actions on the collection object
-  //client.close();
+  
 });
+
+module.exports = db;
