@@ -69,7 +69,7 @@ router.get('/login', function(request, response){
 router.post('/login', function(request, response, next){
 
   if (request.body.email && request.body.pass){
-    //request.session.email = request.body.email;
+
       users.getAuthenticated(request.body.email, request.body.pass, function(error, user){
 
         if (error || !user) {
@@ -105,8 +105,6 @@ router.post('/login', function(request, response, next){
 
 				} else {
 
-            //request.session.user = request.body.email;
-            //response.locals.user = request.session.user;
             request.flash("success", '¡Has iniciat sessió correctament!');
             response.locals.messages = request.flash();
             response.render('users/userprofile', {user: user});
@@ -133,16 +131,6 @@ router.get('/logout', function(request, response, next) {
 
 });
 
-router.post('/confirmMail', function(request, response) {
-  users.findOne({email: request.body.email}, function(err, user) {
-    if (err) {
-      response.send("Aquest mail no existeix");
-    } else {
-      //response.send("El mail es correcte", {user: user});
-      response.render('resetPass', {user: user});
-    }
-  });
-});
 
 
 router.get('/listUsers', function(request, response) {

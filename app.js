@@ -11,16 +11,8 @@ var logger = function(req, resp, next) {
 	console.log(req.url);
 	next();
 }
-//var redis = require('redis');
-//var redisStore = require('connect-redis')(session);
-//var client = redis.createClient();
 var cookieParser = require('cookie-parser');
 var partials = require('express-partials');
-//var expressLayouts = require('express-ejs-layouts');
-
-//client.on('error', (err) => {
-//  console.log('Redis error: ', err);
-//});
 
 
 app.use(logger);
@@ -38,16 +30,6 @@ app.use(session({
         expires: expiryDate
     }
 }));
-/*
-app.use(function (req, res, next) {
-if(req.session.userId !== undefined){
-res.locals.loggedIn = req.user;
-} else {
-res.locals.loggedIn = null;
-}
-next();
-});
-*/
 
 app.use(function(req, res, next) {
   res.locals.user = req.session.user;
@@ -65,11 +47,6 @@ app.engine(".html", require("ejs").__express);
 app.set('view engine', 'html');
 app.set('views', './views');
 app.use('/public', express.static('./public'));
-
-//app.use('/public', express.static('./public'));
-//app.set('view engine', 'pug');
-//app.set('views', './views');
-
 
 app.use(function(req, res) {
 	res.status(404).render('errors/404', {title: '404: Page Not Found'});

@@ -448,7 +448,12 @@ router.post('/assist/:id', function(request,response){
 
 		eventos.save(function(error, asistente) {
 			if (error) {
-				console.log('No funcionaaaaaaaaaaaaaaaaaaaaaa');
+
+				request.flash("error", "¡Error al registrar-se a l'esdeveniment!");
+				response.locals.messages = request.flash();
+				response.render('/');
+				console.log(error);
+
 			} else {
 
 					request.flash("success", "¡Te has registrat al esdeveniment "+eventos.nomEsdev+"!");

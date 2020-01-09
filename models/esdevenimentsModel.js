@@ -5,9 +5,7 @@ var mongoose = require('mongoose');
 var express = require('express');
 var bcrypt = require('bcrypt');
 
-/*
-* Creació del Schema/Objecte dels esdeveniment
-*/
+
 var AsistentesSchema = mongoose.Schema({
   usuari: {
     type: String
@@ -17,6 +15,10 @@ var AsistentesSchema = mongoose.Schema({
   }
 });
 
+
+/*
+* Creació del Schema/Objecte dels esdeveniment
+*/
 var EventoSchema = mongoose.Schema({
   codiEsdev: {
        type: String,

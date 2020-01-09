@@ -6,7 +6,7 @@ var express = require('express');
 var bcrypt = require('bcrypt');
 
 /*
- * Creació del Schema/Objecte dels esdeveniment
+ * Creació del Schema/Objecte dels usuaris
  */
 var UserSchema = new mongoose.Schema({
   nom: {
@@ -30,7 +30,7 @@ var UserSchema = new mongoose.Schema({
 
 
 /**
-* Mètode per encriptar la contrasenya de l'usuari abans de desar-la a la base de dades 
+* Mètode per encriptar la contrasenya de l'usuari abans de desar-la a la base de dades
 **/
 UserSchema.pre('save', function(next) {
   var user = this;
@@ -75,10 +75,8 @@ UserSchema.statics.getAuthenticated = function(email, password, cb) {
 					console.log('Contrasenya incorrecta');
           return cb(null);
         }
-
       });
     }
-
   });
 };
 
