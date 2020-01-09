@@ -472,6 +472,8 @@ router.get('/assist/:id', function(request,response){
 	response.redirect('listUser');
 });
 
+
+
 router.get('/listAssistants/:id', function(request, response) {
 
 	eventos.findById(request.params.id,function(error, eventos){
